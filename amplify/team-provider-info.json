@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-parknarcs-dev-202701-authRole",
+      "UnauthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-dev-202701-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-dev-202701-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-parknarcs-dev-202701-deployment",
+      "UnauthRoleName": "amplify-parknarcs-dev-202701-unauthRole",
+      "StackName": "amplify-parknarcs-dev-202701",
+      "StackId": "arn:aws:cloudformation:us-east-1:801215360931:stack/amplify-parknarcs-dev-202701/ef5db770-3d05-11ec-a358-128d51ee02b5",
+      "AmplifyAppId": "dj96wtfph6dis"
+    },
+    "categories": {
+      "auth": {
+        "parknarcsf3377c15": {}
+      }
+    }
+  }
+}

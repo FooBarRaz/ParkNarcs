@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "parknarcsf3377c15": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
