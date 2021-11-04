@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import {Counter} from './features/counter/Counter';
 import './App.css';
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
+import NarcForm from "./features/narc/submission/narc.form";
 
 function App() {
     return (
@@ -12,7 +13,7 @@ function App() {
                     <Route index element={<>
                         <div>Homepage</div>
                         <Link to="/narc">Narc a bitch out</Link></>}/>
-                    <Route path="/narc" element={<div>Narc 'em</div>}/>
+                    <Route path="/narc" element={<NarcForm />}/>
                 </Routes>
             </header>
         </div>
