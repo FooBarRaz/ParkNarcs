@@ -14,7 +14,7 @@ function App() {
     return (
         <div className="App">
             <nav>
-                <AmplifySignOut/>
+                <AmplifySignOut  buttonText={`Sign out ${username}`}/>
             </nav>
             <header className="App-header">
                 <Routes>
