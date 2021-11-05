@@ -12,10 +12,6 @@ const NarcForm = () => (
             onSubmit={(values, { setSubmitting }) => {
                 console.log('submitting...', values);
                 NarcService.narc(values);
-                // setTimeout(() => {
-                //     alert(JSON.stringify(values, null, 2));
-                //     setSubmitting(false);
-                // }, 400);
             }}
         >
             {({ isSubmitting}) => (
