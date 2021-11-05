@@ -1,21 +1,16 @@
 import {createNarc} from "../../../graphql/mutations";
 import {API, graphqlOperation} from 'aws-amplify';
-
-export type NarcRequest = {
-    comment: string;
-    location: string;
-    state: string;
-    licensePlate: string;
-}
-
-export type NarcReport = NarcRequest & {
-    postedBy: string;
-    date: string;
-}
+import {listNarcs} from "../../../graphql/queries";
+import {NarcReport} from "../types";
 
 class NarcService {
     narc(input: NarcReport) {
         API.graphql(graphqlOperation(createNarc, { input }))
+    }
+
+    async fetchReports() {
+        const narcs = await API.graphql(graphqlOperation(listNarcs));
+        return (narcs as any).data.listNarcs.items;
     }
 }
 

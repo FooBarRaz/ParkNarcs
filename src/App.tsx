@@ -8,6 +8,10 @@ import NarcForm from "./features/narc/submission/narc.form";
 import {Auth} from "aws-amplify";
 import {useSelector} from "react-redux";
 import {RootState} from "./app/store";
+import { Home } from './app/pages/home';
+import { NarcList } from './features/narc/listing/narcList';
+
+
 
 function App() {
     const {username, signedIn} = useSelector((state: RootState) => state.user);
@@ -18,10 +22,9 @@ function App() {
             </nav>
             <header className="App-header">
                 <Routes>
-                    <Route index element={<>
-                        <div>Homepage</div>
-                        <Link to="/narc">Narc a bitch out</Link></>}/>
+                    <Route index element={<Home />}/>
                     {signedIn && <Route path="/narc" element={<NarcForm/>}/>}
+                    <Route path="/list" element={<NarcList />} />
                 </Routes>
             </header>
         </div>
