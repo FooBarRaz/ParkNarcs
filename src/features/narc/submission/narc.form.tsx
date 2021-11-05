@@ -4,9 +4,11 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 import NarcService from './narc.service';
 import {useDispatch} from "react-redux";
 import {narcABitchOut} from "../narc.slice";
+import {useNavigate} from 'react-router-dom';
 
 const NarcForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     return (
         <div>
             <h1>Form</h1>
@@ -17,6 +19,7 @@ const NarcForm = () => {
                     console.log('submitting...', values);
                     dispatch(narcABitchOut(values));
                     setSubmitting(false);
+                    navigate('/list');
                 }}
             >
                 {({isSubmitting}) => (
