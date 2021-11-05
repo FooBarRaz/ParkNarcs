@@ -5,7 +5,7 @@ import NarcService from './narc.service';
 
 const NarcForm = () => (
     <div>
-        <h1>Narc a bitch out</h1>
+        <h1>Form</h1>
         <Formik
             initialValues={{ comment: '', location: '', licensePlate: '', state: ''}}
             validate={() => ({})}
@@ -20,7 +20,7 @@ const NarcForm = () => (
         >
             {({ isSubmitting}) => (
                 <Form>
-                    <input type="textarea" name="comment" />
+                    <Field type="textarea" name="comment" />
                     <ErrorMessage name="comment" component="div" />
                     <Field type="text" name="licensePlate" />
                     <ErrorMessage name="licensePlate" component="div" />
