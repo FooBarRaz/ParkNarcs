@@ -6,11 +6,15 @@ import {store} from './app/store';
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-import Amplify, {Hub} from 'aws-amplify';
+import Amplify, {Auth, Hub} from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {signIn, signOut} from "./features/user/user.slice";
 
 Amplify.configure(awsconfig);
+Auth.currentAuthenticatedUser()
+    .then(({username, attributes: {sub: userId}}) =>
+        store.dispatch(
+            signIn({username, userId})));
 
 ReactDOM.render(
     <React.StrictMode>
@@ -25,8 +29,8 @@ ReactDOM.render(
 
 
 const listener = (data: any) => {
-    const { username, attributes } = data.payload.data;
-    const { sub: userId } = attributes;
+    const {username, attributes} = data.payload.data;
+    const {sub: userId} = attributes;
     switch (data.payload.event) {
         case 'signIn':
             console.log('sign in event', data.payload);
