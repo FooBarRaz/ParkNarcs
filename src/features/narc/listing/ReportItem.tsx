@@ -20,7 +20,7 @@ type Props = {
 };
 
 export const ReportItem = (props: Props) => {
-    const { comment, licensePlate, state, date } = props.report;
+    const { comment, licensePlate, state, date, location } = props.report;
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardHeader
@@ -35,7 +35,7 @@ export const ReportItem = (props: Props) => {
                 //     </IconButton>
                 // }
                 title={`${licensePlate} ${state}`}
-                subheader={date}
+                subheader={location}
             />
             <CardMedia
                 component="img"

@@ -26,9 +26,9 @@ class FakeNarcService {
 
     private generateFakeReport(): NarcReport {
         return {
-            location: faker.address.streetAddress(true),
-            state: faker.address.state(true),
-            licensePlate: faker.random.alphaNumeric(6),
+            location: `${faker.address.streetAddress(true)} ${faker.address.city()} ${faker.address.stateAbbr()} ${faker.address.zipCode()}`,
+            state: faker.address.stateAbbr(),
+            licensePlate: faker.random.alphaNumeric(6).toUpperCase(),
             comment: faker.lorem.sentence(6),
             date: new Date().toISOString(),
             postedBy: faker.animal.dog()
