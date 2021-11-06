@@ -40,7 +40,7 @@ export const ReportItem = (props: Props) => {
             <CardMedia
                 component="img"
                 height="194"
-                image={faker.image.image()}
+                image={faker.image.transport()}
                 alt="pig-parker"
             />
             <CardContent>
