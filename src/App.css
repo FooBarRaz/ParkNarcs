@@ -13,6 +13,10 @@
   }
 }
 
+.content {
+  margin-top: 4em;
+}
+
 .App-header {
   min-height: 100vh;
   display: flex;
