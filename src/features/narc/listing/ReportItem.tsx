@@ -1,18 +1,7 @@
-import {
-    Avatar,
-    Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    CardMedia,
-    Collapse,
-    IconButton,
-    Typography
-} from '@mui/material';
+import {Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography} from '@mui/material';
 import * as React from 'react';
 import {NarcReport} from "../types";
-import {red} from "@mui/material/colors";
-import {ExpandMore, Menu as MenuIcon, Favorite as FavoriteIcon, Share as ShareIcon } from "@mui/icons-material";
+import {Favorite as FavoriteIcon, Share as ShareIcon} from "@mui/icons-material";
 import faker from 'faker';
 
 type Props = {
@@ -24,16 +13,6 @@ export const ReportItem = (props: Props) => {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardHeader
-                // avatar={
-                //     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                //         R
-                //     </Avatar>
-                // }
-                // action={
-                //     <IconButton aria-label="settings">
-                //         <MenuIcon />
-                //     </IconButton>
-                // }
                 title={`${licensePlate} ${state}`}
                 subheader={location}
             />
@@ -49,9 +28,6 @@ export const ReportItem = (props: Props) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
                 <IconButton aria-label="share">
                     <ShareIcon />
                 </IconButton>

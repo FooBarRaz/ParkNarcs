@@ -1,31 +1,38 @@
 import {createNarc} from "../../../graphql/mutations";
 import {API, graphqlOperation} from 'aws-amplify';
 import {listNarcs} from "../../../graphql/queries";
-import {NarcReport} from "../types";
+import {NarcReport, NarcReportEntity} from "../types";
 import faker from 'faker';
 
-class NarcService {
+interface INarcService {
+    narc(input: NarcReport): void;
+
+    fetchReports(): Promise<Array<NarcReportEntity>>;
+}
+
+class NarcService implements INarcService {
     narc(input: NarcReport): void {
-        API.graphql(graphqlOperation(createNarc, { input }))
+        API.graphql(graphqlOperation(createNarc, {input}))
     }
 
-    async fetchReports(): Promise<Array<NarcReport>> {
-        const narcs = await API.graphql(graphqlOperation(listNarcs));
+    async fetchReports(): Promise<Array<NarcReportEntity>> {
+        const narcs = await API.graphql({query: listNarcs, authMode: 'API_KEY'});
         return (narcs as any).data.listNarcs.items;
     }
 }
 
-class FakeNarcService {
+class FakeNarcService implements INarcService  {
     narc(input: NarcReport) {
         console.log('created fake report');
     }
 
-    fetchReports(): Promise<Array<NarcReport>> {
+    fetchReports(): Promise<Array<NarcReportEntity>> {
         return Promise.resolve(Array(10).fill(null).map(this.generateFakeReport))
     }
 
-    private generateFakeReport(): NarcReport {
+    private generateFakeReport(): NarcReportEntity {
         return {
+            id: faker.datatype.uuid(),
             location: `${faker.address.streetAddress(true)} ${faker.address.city()} ${faker.address.stateAbbr()} ${faker.address.zipCode()}`,
             state: faker.address.stateAbbr(),
             licensePlate: faker.random.alphaNumeric(6).toUpperCase(),
@@ -37,6 +44,6 @@ class FakeNarcService {
     }
 }
 
-// const instance = new NarcService();
-const instance = new FakeNarcService();
+const instance = new NarcService();
+// const instance = new FakeNarcService();
 export default instance;

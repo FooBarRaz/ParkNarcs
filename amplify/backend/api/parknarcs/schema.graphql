@@ -1,11 +1,17 @@
-type Narc @model {
-  id: ID!
-  comment: String!
-  date: String!
-  location: String!
-  licensePlate: String!
-  state: String!
-  postedBy: ID!
+type Narc
+@model
+@auth(rules: [
+    { allow: owner, operations: [create, delete, update] },
+    { allow: public, operations: [read]}
+])
+{
+    id: ID!
+    comment: String!
+    date: String!
+    location: String!
+    licensePlate: String!
+    state: String!
+    postedBy: ID!
 }
 
 #type Post @model @key(name: "byBlog", fields: ["blogID"]) {

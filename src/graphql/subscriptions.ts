@@ -17,6 +17,7 @@ export const onCreateNarc = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -35,6 +36,7 @@ export const onUpdateNarc = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -53,6 +55,7 @@ export const onDeleteNarc = /* GraphQL */ `
       _lastChangedAt
       createdAt
       updatedAt
+      owner
     }
   }
 `;

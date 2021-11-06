@@ -9,3 +9,7 @@ export type NarcReport = NarcRequest & {
     postedBy: string;
     date: string;
 }
+
+export type NarcReportEntity = NarcReport & {
+    id: string;
+}

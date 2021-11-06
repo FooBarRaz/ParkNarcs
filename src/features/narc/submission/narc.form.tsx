@@ -5,6 +5,7 @@ import NarcService from './narc.service';
 import {useDispatch} from "react-redux";
 import {narcABitchOut} from "../narc.slice";
 import {useNavigate} from 'react-router-dom';
+import {withAuthenticator} from "@aws-amplify/ui-react";
 
 const NarcForm = () => {
     const dispatch = useDispatch();
@@ -42,4 +43,4 @@ const NarcForm = () => {
     );
 };
 
-export default NarcForm;
+export default withAuthenticator(NarcForm);

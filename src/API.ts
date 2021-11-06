@@ -95,6 +95,7 @@ export type Narc = {
   _lastChangedAt: number,
   createdAt: string,
   updatedAt: string,
+  owner?: string | null,
 };
 
 export type UpdateNarcInput = {
@@ -153,6 +154,7 @@ export type CreateNarcMutation = {
     _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -176,6 +178,7 @@ export type UpdateNarcMutation = {
     _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -199,6 +202,60 @@ export type DeleteNarcMutation = {
     _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type GetNarcQueryVariables = {
+  id: string,
+};
+
+export type GetNarcQuery = {
+  getNarc?:  {
+    __typename: "Narc",
+    id: string,
+    comment: string,
+    date: string,
+    location: string,
+    licensePlate: string,
+    state: string,
+    postedBy: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListNarcsQueryVariables = {
+  filter?: ModelNarcFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListNarcsQuery = {
+  listNarcs?:  {
+    __typename: "ModelNarcConnection",
+    items?:  Array< {
+      __typename: "Narc",
+      id: string,
+      comment: string,
+      date: string,
+      location: string,
+      licensePlate: string,
+      state: string,
+      postedBy: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null > | null,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -226,57 +283,7 @@ export type SyncNarcsQuery = {
       _lastChangedAt: number,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type GetNarcQueryVariables = {
-  id: string,
-};
-
-export type GetNarcQuery = {
-  getNarc?:  {
-    __typename: "Narc",
-    id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    postedBy: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type ListNarcsQueryVariables = {
-  filter?: ModelNarcFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListNarcsQuery = {
-  listNarcs?:  {
-    __typename: "ModelNarcConnection",
-    items?:  Array< {
-      __typename: "Narc",
-      id: string,
-      comment: string,
-      date: string,
-      location: string,
-      licensePlate: string,
-      state: string,
-      postedBy: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
+      owner?: string | null,
     } | null > | null,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -298,6 +305,7 @@ export type OnCreateNarcSubscription = {
     _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -316,6 +324,7 @@ export type OnUpdateNarcSubscription = {
     _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -334,5 +343,6 @@ export type OnDeleteNarcSubscription = {
     _lastChangedAt: number,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
