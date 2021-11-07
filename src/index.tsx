@@ -29,10 +29,10 @@ ReactDOM.render(
 
 
 const listener = (data: any) => {
-    const {username, attributes} = data.payload.data;
-    const {sub: userId} = attributes;
     switch (data.payload.event) {
         case 'signIn':
+            const {username, attributes} = data.payload?.data;
+            const {sub: userId} = attributes;
             console.log('sign in event', data.payload);
             store.dispatch(signIn({userId, username}))
             break;

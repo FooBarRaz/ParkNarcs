@@ -4,10 +4,11 @@ import {AccountCircle} from "@mui/icons-material";
 import {AmplifySignOut} from "@aws-amplify/ui-react";
 import {useSelector} from "react-redux";
 import {RootState} from "../store";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function MyAccountButton() {
     const {username, signedIn} = useSelector((state: RootState) => state.user);
+    let navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleMenu = (event: { currentTarget: any }) => {
@@ -45,9 +46,9 @@ export function MyAccountButton() {
             onClose={handleClose}
         ><MenuItem>
             {signedIn
-                ? <AmplifySignOut/>
+                ? <AmplifySignOut handleAuthStateChange={() => { handleClose(); navigate('/'); } } />
                 : <Link to="/signin">
-                    <button> Sign In
+                    <button onClick={handleClose}> Sign In
                     </button>
                 </Link>
             }

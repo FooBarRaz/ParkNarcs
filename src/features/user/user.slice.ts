@@ -22,7 +22,7 @@ export const userSlice = createSlice({
             state.username = action.payload.username
         },
         signOut: (state) => {
-            state = { signedIn: false }
+            return { signedIn: false }
         }
     },
     // The `extraReducers` field lets the slice handle actions defined elsewhere,
