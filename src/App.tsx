@@ -1,7 +1,7 @@
 import React from 'react';
-import { AmplifyAuthenticator, AmplifySignIn } from '@aws-amplify/ui-react'
+import { AmplifySignIn } from '@aws-amplify/ui-react'
 import './App.css';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import NarcForm from "./features/narc/submission/narc.form";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
@@ -10,7 +10,6 @@ import { Navbar } from "./app/components/Navbar";
 
 function App() {
     const {signedIn} = useSelector((state: RootState) => state.user);
-    let navigate = useNavigate();
     return (
         <div className="App">
             <header>

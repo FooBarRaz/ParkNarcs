@@ -1,19 +1,21 @@
 import React from 'react';
-import {ErrorMessage, Field, Form, Formik, useFormik} from 'formik';
-import {useDispatch} from "react-redux";
-import {narcABitchOut} from "../narc.slice";
-import {useNavigate} from 'react-router-dom';
-import {withAuthenticator} from "@aws-amplify/ui-react";
-import {makeStyles} from "@mui/styles";
-import {Button, TextField} from '@mui/material';
+import { useFormik } from 'formik';
+import { useDispatch } from "react-redux";
+import { narcABitchOut } from "../narc.slice";
+import { useNavigate } from 'react-router-dom';
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { makeStyles } from "@mui/styles";
+import { Button, TextField, Typography } from '@mui/material';
 
 const useStyles = makeStyles({
     content: {
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '1em'
-
+        margin: '1em',
+        justifyContent: 'space-around'
+    },
+    inputField: {
+        marginBottom: '0.5em'
     }
+
 })
 
 type FormFields = {
@@ -26,7 +28,7 @@ type FormFields = {
 export const NarcForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {content} = useStyles();
+    const {content, inputField: inputFieldStyle} = useStyles();
 
     const formik = useFormik<FormFields>({
         initialValues: {comment: '', location: '', licensePlate: '', state: ''},
@@ -38,9 +40,12 @@ export const NarcForm = () => {
     });
     return (
         <div>
-            <form onSubmit={formik.handleSubmit}> {
+            <Typography variant={'h6'}>Narc 'em out</Typography>
+            <form className={content} onSubmit={formik.handleSubmit}> {
                 (['comment', 'location', 'licensePlate', 'state'] as Array<keyof FormFields>).map((field: keyof FormFields) => (
                     < TextField
+                        className={inputFieldStyle}
+                        key={`input-${field}`}
                         fullWidth
                         id={field}
                         name={field}
