@@ -1,6 +1,6 @@
 {
     "identityPoolName": "parknarcsf3377c15_identitypool_f3377c15",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "parknaf3377c15",
     "userPoolName": "parknarcsf3377c15_userpool_f3377c15",
     "autoVerifiedAttributes": [
@@ -20,6 +20,7 @@
     "requiredAttributes": [
         "email"
     ],
+    "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [

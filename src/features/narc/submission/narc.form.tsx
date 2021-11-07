@@ -3,9 +3,11 @@ import { useFormik } from 'formik';
 import { useDispatch } from "react-redux";
 import { narcABitchOut } from "../narc.slice";
 import { useNavigate } from 'react-router-dom';
+import { Storage } from 'aws-amplify';
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { makeStyles } from "@mui/styles";
-import { Button, TextField, Typography } from '@mui/material';
+import {Button, Input, TextField, Typography} from '@mui/material';
+import { nanoid } from 'nanoid';
 
 const useStyles = makeStyles({
     content: {
@@ -38,6 +40,18 @@ export const NarcForm = () => {
             navigate('/');
         },
     });
+
+    async function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = (e.target.files || [])[0];
+        try {
+            await Storage.put(nanoid(), file, {
+                contentType: "image/png", // contentType is optional
+            }).then((result) => console.log('file upload result: ', result));
+        } catch (error) {
+            console.log("Error uploading file: ", error);
+        }
+    }
+
     return (
         <div>
             <Typography variant={'h6'}>Narc 'em out</Typography>
@@ -58,6 +72,12 @@ export const NarcForm = () => {
                     />
                 ))
             }
+                <label htmlFor="contained-button-file">
+                    <input style={{display: 'none'}} accept="image/*" id="contained-button-file" multiple type="file" />
+                    <Button variant="contained" component="span">
+                        Upload
+                    </Button>
+                </label>
                 <Button color="primary" variant="contained" fullWidth type="submit">
                     Submit
                 </Button>
