@@ -2,8 +2,12 @@ import * as React from "react";
 import {IconButton, Menu, MenuItem} from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
 import {AmplifySignOut} from "@aws-amplify/ui-react";
+import {useSelector} from "react-redux";
+import {RootState} from "../store";
+import {Link} from "react-router-dom";
 
 export function MyAccountButton() {
+    const {username, signedIn} = useSelector((state: RootState) => state.user);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleMenu = (event: { currentTarget: any }) => {
@@ -39,8 +43,15 @@ export function MyAccountButton() {
             }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
-        >
-            <MenuItem><AmplifySignOut/></MenuItem>
+        ><MenuItem>
+            {signedIn
+                ? <AmplifySignOut/>
+                : <Link to="/signin">
+                    <button> Sign In
+                    </button>
+                </Link>
+            }
+        </MenuItem>
         </Menu>
     </div>;
 }

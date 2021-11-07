@@ -1,37 +1,36 @@
-import {Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography} from '@mui/material';
+import {Card, CardContent, CardHeader, CardMedia, Typography} from '@mui/material';
 import * as React from 'react';
-import {NarcReport} from "../types";
-import {Favorite as FavoriteIcon, Share as ShareIcon} from "@mui/icons-material";
+import {NarcReportEntity} from "../types";
 import faker from 'faker';
 
 type Props = {
-    report: NarcReport;
+    report: NarcReportEntity;
 };
 
 export const ReportItem = (props: Props) => {
-    const { comment, licensePlate, state, date, location } = props.report;
+    const { comment, licensePlate, state, date, location, id } = props.report;
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardHeader
                 title={`${licensePlate} ${state}`}
-                subheader={location}
+                subheader={comment}
             />
             <CardMedia
                 component="img"
                 height="194"
                 image={faker.image.transport()}
-                alt="pig-parker"
+                alt={`pig-parker-${id}`}
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    {comment}
+                    {location}
                 </Typography>
             </CardContent>
-            <CardActions disableSpacing>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
-            </CardActions>
+            {/*<CardActions disableSpacing>*/}
+            {/*    <IconButton aria-label="share">*/}
+            {/*        <ShareIcon />*/}
+            {/*    </IconButton>*/}
+            {/*</CardActions>*/}
         </Card>
     );
 };

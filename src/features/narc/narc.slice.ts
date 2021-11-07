@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import NarcService from "./submission/narc.service";
 import {RootState} from "../../app/store";
-import {NarcReport, NarcRequest} from "./types";
+import {NarcReportEntity, NarcRequest} from "./types";
 
 export interface NarcState {
-    reports: Array<NarcReport>;
+    reports: Array<NarcReportEntity>;
 }
 
 const initialState: NarcState = {

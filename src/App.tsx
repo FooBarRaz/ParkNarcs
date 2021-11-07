@@ -1,5 +1,5 @@
 import React from 'react';
-import {withAuthenticator} from '@aws-amplify/ui-react'
+import {AmplifySignIn, withAuthenticator} from '@aws-amplify/ui-react'
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
 import NarcForm from "./features/narc/submission/narc.form";
@@ -18,9 +18,9 @@ function App() {
             </header>
             <div className="content">
                 <Routes>
-                    <Route index element={<Home/>}/>
+                    <Route index element={<NarcList/>}/>
                     {signedIn && <Route path="/narc" element={<NarcForm/>}/>}
-                    <Route path="/list" element={<NarcList/>}/>
+                    {!signedIn && <Route path="/signin" element={<AmplifySignIn />}/>}
                 </Routes>
             </div>
         </div>
