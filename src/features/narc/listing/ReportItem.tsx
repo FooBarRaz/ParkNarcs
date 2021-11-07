@@ -2,15 +2,24 @@ import {Card, CardContent, CardHeader, CardMedia, Typography} from '@mui/materia
 import * as React from 'react';
 import {NarcReportEntity} from "../types";
 import faker from 'faker';
+import { makeStyles } from '@mui/styles';
 
 type Props = {
     report: NarcReportEntity;
 };
 
+
+const classes = makeStyles({
+    item: {
+        marginBottom: '1rem'
+    }
+})
+
 export const ReportItem = (props: Props) => {
     const { comment, licensePlate, state, date, location, id } = props.report;
+    const { item: itemStyle } = classes();
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card className={itemStyle}>
             <CardHeader
                 title={`${licensePlate} ${state}`}
                 subheader={comment}

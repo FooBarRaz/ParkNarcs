@@ -6,8 +6,17 @@ import {useSelector} from "react-redux";
 import {RootState} from "../store";
 import {MyAccountButton} from "./MyAccountButton";
 import {useLocation, useNavigate} from "react-router-dom";
+import { makeStyles, withStyles } from '@mui/styles';
 
 type Props = {};
+
+const useStyles = makeStyles({
+    navbar: {
+        boxShadow: '12px'
+    }
+});
+
+
 
 const BackButton = () => {
     const navigate = useNavigate();
@@ -18,8 +27,9 @@ const BackButton = () => {
 }
 export const Navbar = (props: Props) => {
     const location = useLocation();
+    const {navbar} = useStyles();
     return (
-        <AppBar position="fixed">
+        <AppBar className={navbar} position="fixed">
             <Toolbar>
                 <IconButton
                     size="large"

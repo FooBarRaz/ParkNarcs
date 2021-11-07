@@ -44,10 +44,7 @@ export const NarcList = (props: Props) => {
             </Box>
             {
                 reports.map(eachReport => (
-                    <>
                         <ReportItem report={eachReport}/>
-                        <hr/>
-                    </>
                 ))
             }
         </div>
