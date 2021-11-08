@@ -14,6 +14,7 @@ export const createNarc = /* GraphQL */ `
       location
       licensePlate
       state
+      image
       postedBy
       _version
       _deleted
@@ -36,6 +37,7 @@ export const updateNarc = /* GraphQL */ `
       location
       licensePlate
       state
+      image
       postedBy
       _version
       _deleted
@@ -58,6 +60,7 @@ export const deleteNarc = /* GraphQL */ `
       location
       licensePlate
       state
+      image
       postedBy
       _version
       _deleted

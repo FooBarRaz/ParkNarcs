@@ -3,6 +3,7 @@ export type NarcRequest = {
     location: string;
     state: string;
     licensePlate: string;
+    image: string;
 }
 
 export type NarcReport = NarcRequest & {

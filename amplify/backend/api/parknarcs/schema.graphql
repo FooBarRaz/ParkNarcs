@@ -11,6 +11,7 @@ type Narc
     location: String!
     licensePlate: String!
     state: String!
+    image: String!
     postedBy: ID!
 }
 

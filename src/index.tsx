@@ -6,7 +6,7 @@ import {store} from './app/store';
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-import Amplify, {Auth, Hub} from 'aws-amplify';
+import Amplify, {Auth, Hub, Storage} from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {signIn, signOut} from "./features/user/user.slice";
 

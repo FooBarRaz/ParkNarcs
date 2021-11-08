@@ -15,6 +15,7 @@ export declare class Narc {
   readonly location: string;
   readonly licensePlate: string;
   readonly state: string;
+  readonly image: string;
   readonly postedBy: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;

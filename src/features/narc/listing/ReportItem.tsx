@@ -3,6 +3,8 @@ import * as React from 'react';
 import {NarcReportEntity} from "../types";
 import faker from 'faker';
 import { makeStyles } from '@mui/styles';
+import NarcService from '../submission/narc.service';
+import {AmplifyS3Image} from "@aws-amplify/ui-react";
 
 type Props = {
     report: NarcReportEntity;
@@ -16,7 +18,7 @@ const classes = makeStyles({
 })
 
 export const ReportItem = (props: Props) => {
-    const { comment, licensePlate, state, date, location, id } = props.report;
+    const { comment, licensePlate, state, date, location, id, image } = props.report;
     const { item: itemStyle } = classes();
     return (
         <Card className={itemStyle}>
@@ -24,12 +26,13 @@ export const ReportItem = (props: Props) => {
                 title={`${licensePlate} ${state}`}
                 subheader={comment}
             />
-            <CardMedia
-                component="img"
-                height="194"
-                image={faker.image.transport()}
-                alt={`pig-parker-${id}`}
-            />
+            <AmplifyS3Image imgKey={image} imgProps={{ height: '4rem' }}/>
+            {/*<CardMedia*/}
+            {/*    component="img"*/}
+            {/*    height="194"*/}
+            {/*    image={image}*/}
+            {/*    alt={`pig-parker-${id}`}*/}
+            {/*/>*/}
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                     {location}

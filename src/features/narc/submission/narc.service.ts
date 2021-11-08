@@ -1,5 +1,5 @@
 import {createNarc} from "../../../graphql/mutations";
-import {API, graphqlOperation} from 'aws-amplify';
+import {API, graphqlOperation, Storage} from 'aws-amplify';
 import {listNarcs} from "../../../graphql/queries";
 import {NarcReport, NarcReportEntity} from "../types";
 import faker from 'faker';
@@ -8,6 +8,8 @@ interface INarcService {
     narc(input: NarcReport): void;
 
     fetchReports(): Promise<Array<NarcReportEntity>>;
+
+    fetchImage(imageKey: string): Promise<any>;
 }
 
 class NarcService implements INarcService {
@@ -18,6 +20,12 @@ class NarcService implements INarcService {
     async fetchReports(): Promise<Array<NarcReportEntity>> {
         const narcs = await API.graphql({query: listNarcs, authMode: 'API_KEY'});
         return (narcs as any).data.listNarcs.items;
+    }
+
+    fetchImage(imageKey: string): Promise<any> {
+        return Storage.get(imageKey, {download: true, level: 'public'})
+            .then(file => URL.createObjectURL(file))
+            .catch(e => console.error('error fetching ' + imageKey, e)); // get key from Storage.list
     }
 }
 
@@ -38,9 +46,14 @@ class FakeNarcService implements INarcService  {
             licensePlate: faker.random.alphaNumeric(6).toUpperCase(),
             comment: faker.lorem.sentence(6),
             date: new Date().toISOString(),
+            image: faker.datatype.uuid(),
             postedBy: faker.animal.dog()
         }
 
+    }
+
+    fetchImage(imageKey: string): Promise<any> {
+        return Promise.resolve(faker.image.transport());
     }
 }
 

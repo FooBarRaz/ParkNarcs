@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useFormik } from 'formik';
 import { useDispatch } from "react-redux";
 import { narcABitchOut } from "../narc.slice";
@@ -30,23 +30,31 @@ type FormFields = {
 export const NarcForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [imageKey, setImageKey] = useState<string>('');
     const {content, inputField: inputFieldStyle} = useStyles();
 
     const formik = useFormik<FormFields>({
         initialValues: {comment: '', location: '', licensePlate: '', state: ''},
         onSubmit: (values) => {
-            console.log('submitting...', values);
-            dispatch(narcABitchOut(values));
-            navigate('/');
+            const request = { ...values, image: imageKey };
+            if (!!imageKey) {
+                console.log('submitting...', request);
+                dispatch(narcABitchOut(request));
+                navigate('/');
+            }
         },
     });
 
-    async function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    async function onUploadImage(e: React.ChangeEvent<HTMLInputElement>) {
         const file = (e.target.files || [])[0];
         try {
-            await Storage.put(nanoid(), file, {
+            let key = nanoid();
+            await Storage.put(key, file, {
                 contentType: "image/png", // contentType is optional
-            }).then((result) => console.log('file upload result: ', result));
+            }).then((result) => {
+                console.log('file upload result: ', result);
+                setImageKey(key);
+            });
         } catch (error) {
             console.log("Error uploading file: ", error);
         }
@@ -73,7 +81,13 @@ export const NarcForm = () => {
                 ))
             }
                 <label htmlFor="contained-button-file">
-                    <input style={{display: 'none'}} accept="image/*" id="contained-button-file" multiple type="file" />
+                    <input
+                        style={{display: 'none'}}
+                        name="image"
+                        accept="image/*"
+                        id="contained-button-file"
+                        onChange={onUploadImage}
+                        multiple type="file" />
                     <Button variant="contained" component="span">
                         Upload
                     </Button>
