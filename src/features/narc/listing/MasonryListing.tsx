@@ -9,6 +9,7 @@ import { RootState } from '../../../app/store';
 import { useEffect } from 'react';
 import { fetchReports } from '../narc.slice';
 import { AmplifyS3Image } from '@aws-amplify/ui-react';
+import { LinkFab } from '../../../app/components/LinkFab';
 
 export default function MasonryListing() {
     const dispatch = useDispatch();
@@ -19,27 +20,30 @@ export default function MasonryListing() {
     }, []);
 
     return (
-        <ImageList
-            // sx={{ width: 500, height: 450 }}
-        >
-            {reports.map((item) => (
-                <ImageListItem key={item.image}>
-                    <AmplifyS3Image imgKey={item.image} imgProps={{style: { width: '640px' }}} />
-                    <ImageListItemBar
-                        title={item.comment}
-                        subtitle={item.location}
-                        actionIcon={
-                            <IconButton
-                                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                                aria-label={`info about ${item.comment}`}
-                            >
-                                <InfoIcon />
-                            </IconButton>
-                        }
-                    />
-                </ImageListItem>
-            ))}
-        </ImageList>
+        <>
+            <ImageList
+                // sx={{ width: 500, height: 450 }}
+            >
+                {reports.map((item) => (
+                    <ImageListItem key={item.image}>
+                        <AmplifyS3Image imgKey={item.image} imgProps={{style: {width: '640px'}}}/>
+                        <ImageListItemBar
+                            title={item.comment}
+                            subtitle={item.location}
+                            actionIcon={
+                                <IconButton
+                                    sx={{color: 'rgba(255, 255, 255, 0.54)'}}
+                                    aria-label={`info about ${item.comment}`}
+                                >
+                                    <InfoIcon/>
+                                </IconButton>
+                            }
+                        />
+                    </ImageListItem>
+                ))}
+            </ImageList>
+            <LinkFab linkTo="narc"/>
+        </>
     );
 }
 //

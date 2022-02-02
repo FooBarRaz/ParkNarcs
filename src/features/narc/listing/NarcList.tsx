@@ -8,6 +8,7 @@ import {makeStyles} from "@mui/styles";
 import {Add as AddIcon} from "@mui/icons-material";
 import {Box, Fab} from '@mui/material';
 import { Link } from 'react-router-dom';
+import { LinkFab } from '../../../app/components/LinkFab';
 
 type Props = {};
 
@@ -35,13 +36,7 @@ export const NarcList = (props: Props) => {
 
     return (
         <div className={styles.root}>
-            <Box className={styles.fab} sx={{'& > :not(style)': {m: 1}}}>
-                <Link to="narc">
-                    <Fab color="primary" aria-label="add">
-                        <AddIcon/>
-                    </Fab>
-                </Link>
-            </Box>
+            <LinkFab linkTo="narc" />
             {
                 reports.map(eachReport => (
                         <ReportItem report={eachReport}/>
