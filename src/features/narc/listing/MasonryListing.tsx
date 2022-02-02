@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { fetchReports } from '../narc.slice';
 import { AmplifyS3Image } from '@aws-amplify/ui-react';
 import { LinkFab } from '../../../app/components/LinkFab';
+import { Box } from '@mui/material';
 
 export default function MasonryListing() {
     const dispatch = useDispatch();
@@ -22,11 +23,17 @@ export default function MasonryListing() {
     return (
         <>
             <ImageList
-                // sx={{ width: 500, height: 450 }}
+                cols={3}
             >
                 {reports.map((item) => (
                     <ImageListItem key={item.image}>
-                        <AmplifyS3Image imgKey={item.image} imgProps={{style: {width: '640px'}}}/>
+                        <Box sx={{
+                            width: '33vw',
+                        }}>
+                            <AmplifyS3Image imgKey={item.image}
+                                            imgProps={{style: {height: '100%', width: '100%'}}}
+                            />
+                        </Box>
                         <ImageListItemBar
                             title={item.comment}
                             subtitle={item.location}
