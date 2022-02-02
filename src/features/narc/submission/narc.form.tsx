@@ -50,18 +50,24 @@ export const NarcForm = () => {
     function resizeImage(file: File): Promise<File> {
         const maxSize = 1280;
         return new Promise(resolve => {
-            Resizer.imageFileResizer(file, maxSize, maxSize, 'WEBP', 100, 0, uri => resolve(uri as File), 'file')
+            Resizer.imageFileResizer(file,
+                maxSize,
+                maxSize,
+                'WEBP',
+                100,
+                0,
+                uri => resolve(uri as File),
+                'file')
         })
     }
 
     async function onUploadImage(e: React.ChangeEvent<HTMLInputElement>) {
-        console.log('UPLOADING IMAGE!!');
         const file = (e.target.files || [])[0];
         const resizedFile = await resizeImage(file);
         try {
             let key = nanoid();
             await Storage.put(key, resizedFile, {
-                contentType: "image/png", // contentType is optional
+                contentType: "image/webp", // contentType is optional
             }).then((result) => {
                 console.log('file upload result: ', result);
                 setImageKey(key);
@@ -102,7 +108,7 @@ export const NarcForm = () => {
                         onChange={formik.handleChange}
                     >
                         {Object.entries(US_STATES).map(([stateAbbrv, stateLabel]) => {
-                           return <MenuItem value={stateAbbrv}>{stateLabel}</MenuItem>
+                            return <MenuItem value={stateAbbrv}>{stateLabel}</MenuItem>
                         })}
                     </Select>
                 </FormControl>

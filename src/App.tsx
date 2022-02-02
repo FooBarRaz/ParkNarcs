@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
 import { NarcList } from './features/narc/listing/NarcList';
 import { Navbar } from "./app/components/Navbar";
+import MasonryListing from './features/narc/listing/MasonryListing';
 
 function App() {
     const {signedIn} = useSelector((state: RootState) => state.user);
@@ -17,7 +18,7 @@ function App() {
             </header>
             <div className="content">
                 <Routes>
-                    <Route index element={<NarcList/>}/>
+                    <Route index element={<MasonryListing/>}/>
                     <Route path="/narc" element={<NarcForm/>}/>
                     {!signedIn && <Route path="/signin" element={<AmplifySignIn />}/>}
                 </Routes>
