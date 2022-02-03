@@ -114,26 +114,31 @@ export const NarcForm = () => {
                 <Box className={inputFieldStyles}>
                     <FormControl>
                         <label htmlFor="contained-button-file">
-                    <input
-                    style={{display: 'none'}}
-                    name="image"
-                    accept="image/*"
-                    id="contained-button-file"
-                    onChange={onUploadImage}
-                    multiple type="file"/>
-                    <Button variant="contained" component="span">
-                     Upload Image
+                            <input
+                                style={{display: 'none'}}
+                                name="image"
+                                accept="image/*"
+                                id="contained-button-file"
+                                onChange={onUploadImage}
+                                multiple type="file"/>
+                            <Button variant="contained" component="span">
+                                Upload Image
+                            </Button>
+                        </label>
+                    </FormControl>
+                    {imageKey && <img
+                        src={imageKey}
+                        alt="image"
+                        width="100%"
+                    />}
+                </Box>
+                <Button color="primary" variant="contained" fullWidth type="submit">
+                    Submit
                 </Button>
-            </label>
-        </FormControl>
-</Box>
-    <Button color="primary" variant="contained" fullWidth type="submit">
-        Submit
-    </Button>
-</form>
-</div>
-)
-    ;
+            </form>
+        </div>
+    )
+        ;
 };
 
 
