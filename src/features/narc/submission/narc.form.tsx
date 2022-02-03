@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
-import { useDispatch } from "react-redux";
-import { narcABitchOut } from "../narc.slice";
-import { useNavigate } from 'react-router-dom';
-import { Storage } from 'aws-amplify';
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import { makeStyles } from "@mui/styles";
-import { Button, FormControl, Input, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import { nanoid } from 'nanoid';
+import React, {useState} from 'react';
+import {useFormik} from 'formik';
+import {useDispatch} from "react-redux";
+import {narcABitchOut} from "../narc.slice";
+import {useNavigate} from 'react-router-dom';
+import {Storage} from 'aws-amplify';
+import {withAuthenticator} from "@aws-amplify/ui-react";
+import {makeStyles} from "@mui/styles";
+import {Box, Button, FormControl, Input, InputLabel, MenuItem, Select, TextField, Typography} from '@mui/material';
+import {nanoid} from 'nanoid';
 import * as yup from 'yup';
-import { US_STATES } from '../../../data/states';
+import {US_STATES} from '../../../data/states';
 import Resizer from 'react-image-file-resizer';
 
 const useStyles = makeStyles({
     content: {
-        margin: '1em',
+        margin: '1rem',
         justifyContent: 'space-around'
     },
     inputField: {
-        marginBottom: '0.5em'
+        marginBottom: '1rem'
     }
 })
 
@@ -33,7 +33,7 @@ export const NarcForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [imageKey, setImageKey] = useState<string>('');
-    const {content, inputField: inputFieldStyle} = useStyles();
+    const {content, inputField: inputFieldStyles} = useStyles();
 
     const formik = useFormik<FormFields>({
         initialValues: {comment: '', location: '', licensePlate: '', state: ''},
@@ -63,7 +63,7 @@ export const NarcForm = () => {
                 100,
                 0,
                 uri => resolve(uri as string),
-                )
+            )
         })
     }
 
@@ -79,52 +79,61 @@ export const NarcForm = () => {
             <form className={content} onSubmit={formik.handleSubmit}>
                 {
                     (['comment', 'location', 'licensePlate'] as Array<keyof FormFields>).map((field: keyof FormFields) => (
-                        < TextField
-                            className={inputFieldStyle}
-                            key={`input-${field}`}
-                            fullWidth
-                            id={field}
-                            name={field}
-                            label={field}
-                            type={field}
-                            value={formik.values[field]}
-                            onChange={formik.handleChange}
-                            error={formik.touched[field] && Boolean(formik.errors[field])}
-                            helperText={formik.touched[field] && formik.errors[field]}
-                        />
+                        <Box id={`input-box-${field}`} className={inputFieldStyles}>
+                            < TextField
+                                className={inputFieldStyles}
+                                key={`input-${field}`}
+                                fullWidth
+                                id={field}
+                                name={field}
+                                label={field}
+                                type={field}
+                                value={formik.values[field]}
+                                onChange={formik.handleChange}
+                                error={formik.touched[field] && Boolean(formik.errors[field])}
+                                helperText={formik.touched[field] && formik.errors[field]}
+                            />
+                        </Box>
                     ))
                 }
-                <FormControl fullWidth className={inputFieldStyle}>
-                    <InputLabel>State</InputLabel>
-                    <Select
-                        value={US_STATES[formik.values.state as keyof typeof US_STATES]}
-                        label="State"
-                        name="state"
-                        onChange={formik.handleChange}
-                    >
-                        {Object.entries(US_STATES).map(([stateAbbrv, stateLabel]) => {
-                            return <MenuItem value={stateAbbrv}>{stateLabel}</MenuItem>
-                        })}
-                    </Select>
-                </FormControl>
-                <label htmlFor="contained-button-file">
+                <Box className={inputFieldStyles}>
+                    <FormControl fullWidth>
+                        <InputLabel>State</InputLabel>
+                        <Select
+                            value={US_STATES[formik.values.state as keyof typeof US_STATES]}
+                            label="License Plate State"
+                            name="state"
+                            onChange={formik.handleChange}
+                        >
+                            {Object.entries(US_STATES).map(([stateAbbrv, stateLabel]) => {
+                                return <MenuItem value={stateAbbrv}>{stateLabel}</MenuItem>
+                            })}
+                        </Select>
+                    </FormControl>
+                </Box>
+                <Box className={inputFieldStyles}>
+                    <FormControl>
+                        <label htmlFor="contained-button-file">
                     <input
-                        style={{display: 'none'}}
-                        name="image"
-                        accept="image/*"
-                        id="contained-button-file"
-                        onChange={onUploadImage}
-                        multiple type="file"/>
+                    style={{display: 'none'}}
+                    name="image"
+                    accept="image/*"
+                    id="contained-button-file"
+                    onChange={onUploadImage}
+                    multiple type="file"/>
                     <Button variant="contained" component="span">
-                        Upload
-                    </Button>
-                </label>
-                <Button color="primary" variant="contained" fullWidth type="submit">
-                    Submit
+                     Upload Image
                 </Button>
-            </form>
-        </div>
-    );
+            </label>
+        </FormControl>
+</Box>
+    <Button color="primary" variant="contained" fullWidth type="submit">
+        Submit
+    </Button>
+</form>
+</div>
+)
+    ;
 };
 
 
