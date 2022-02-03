@@ -71,17 +71,6 @@ export const NarcForm = () => {
         const file = (e.target.files || [])[0];
         const resizedFile = await resizeImage(file);
         setImageKey(resizedFile)
-        // try {
-            // let key = nanoid();
-        //     await Storage.put(key, resizedFile, {
-        //         contentType: "image/webp", // contentType is optional
-        //     }).then((result) => {
-        //         console.log('file upload result: ', result);
-        //         setImageKey(key);
-        //     });
-        // } catch (error) {
-        //     console.log("Error uploading file: ", error);
-        // }
     }
 
     return (
@@ -108,10 +97,9 @@ export const NarcForm = () => {
                 <FormControl fullWidth className={inputFieldStyle}>
                     <InputLabel>State</InputLabel>
                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
                         value={US_STATES[formik.values.state as keyof typeof US_STATES]}
                         label="State"
+                        name="state"
                         onChange={formik.handleChange}
                     >
                         {Object.entries(US_STATES).map(([stateAbbrv, stateLabel]) => {
