@@ -1,18 +1,15 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
-import { useEffect } from 'react';
 import { fetchReports } from '../narc.slice';
-import { AmplifyS3Image } from '@aws-amplify/ui-react';
 import { LinkFab } from '../../../app/components/LinkFab';
-import {Box, Button} from '@mui/material';
+import { Box } from '@mui/material';
 
-export default function MasonryListing() {
+export default () => {
     const dispatch = useDispatch();
     const {reports} = useSelector((state: RootState) => state.narcs);
 

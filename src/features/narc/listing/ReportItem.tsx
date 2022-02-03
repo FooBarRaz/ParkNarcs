@@ -1,8 +1,7 @@
-import {Box, Card, CardContent, CardHeader, CardMedia, Typography} from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import * as React from 'react';
-import {NarcReportEntity} from "../types";
-import {makeStyles} from '@mui/styles';
-import {AmplifyS3Image} from "@aws-amplify/ui-react";
+import { NarcReportEntity } from "../types";
+import { makeStyles } from '@mui/styles';
 
 type Props = {
     report: NarcReportEntity;

@@ -5,7 +5,6 @@ import { Route, Routes } from 'react-router-dom';
 import NarcForm from "./features/narc/submission/narc.form";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
-import { NarcList } from './features/narc/listing/NarcList';
 import { Navbar } from "./app/components/Navbar";
 import MasonryListing from "./features/narc/listing/MasonryListing";
 

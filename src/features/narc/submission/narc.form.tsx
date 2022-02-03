@@ -1,16 +1,15 @@
-import React, {useState} from 'react';
-import {useFormik} from 'formik';
-import {useDispatch} from "react-redux";
-import {narcABitchOut} from "../narc.slice";
-import {useNavigate} from 'react-router-dom';
-import {Storage} from 'aws-amplify';
-import {withAuthenticator} from "@aws-amplify/ui-react";
-import {makeStyles} from "@mui/styles";
-import {Box, Button, FormControl, Input, InputLabel, MenuItem, Select, TextField, Typography} from '@mui/material';
-import {nanoid} from 'nanoid';
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import { useDispatch } from "react-redux";
+import { narcABitchOut } from "../narc.slice";
+import { useNavigate } from 'react-router-dom';
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { makeStyles } from "@mui/styles";
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import * as yup from 'yup';
-import {US_STATES} from '../../../data/states';
+import { US_STATES } from '../../../data/states';
 import Resizer from 'react-image-file-resizer';
+import { ImagePreview } from './ImagePreview';
 
 const useStyles = makeStyles({
     content: {
@@ -29,6 +28,13 @@ type FormFields = {
     state: string;
 }
 
+export const formFieldLabels: Record<keyof FormFields, string> = {
+    comment: 'Comment',
+    location: 'Location',
+    licensePlate: 'License Plate Number',
+    state: 'License Plate State',
+}
+
 export const NarcForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -40,7 +46,7 @@ export const NarcForm = () => {
         validationSchema: yup.object({
             comment: yup.string().required(),
             location: yup.string().required(),
-            licensePlate: yup.string().required(),
+            licensePlate: yup.string().matches(/^\w+(-?)\w+$/).required(),
             state: yup.string().max(2),
         }),
         onSubmit: (values) => {
@@ -86,7 +92,7 @@ export const NarcForm = () => {
                                 fullWidth
                                 id={field}
                                 name={field}
-                                label={field}
+                                label={formFieldLabels[field]}
                                 type={field}
                                 value={formik.values[field]}
                                 onChange={formik.handleChange}
@@ -98,10 +104,9 @@ export const NarcForm = () => {
                 }
                 <Box className={inputFieldStyles}>
                     <FormControl fullWidth>
-                        <InputLabel>State</InputLabel>
+                        <InputLabel>{formFieldLabels['state']}</InputLabel>
                         <Select
                             value={US_STATES[formik.values.state as keyof typeof US_STATES]}
-                            label="License Plate State"
                             name="state"
                             onChange={formik.handleChange}
                         >
@@ -126,11 +131,7 @@ export const NarcForm = () => {
                             </Button>
                         </label>
                     </FormControl>
-                    {imageKey && <img
-                        src={imageKey}
-                        alt="image"
-                        width="100%"
-                    />}
+                    <ImagePreview src={imageKey} />
                 </Box>
                 <Button color="primary" variant="contained" fullWidth type="submit">
                     Submit
