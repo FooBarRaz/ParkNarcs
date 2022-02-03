@@ -8,6 +8,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { makeStyles } from "@mui/styles";
 import { Button, FormControl, Input, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { nanoid } from 'nanoid';
+import * as yup from 'yup';
 import { US_STATES } from '../../../data/states';
 import Resizer from 'react-image-file-resizer';
 
@@ -37,6 +38,12 @@ export const NarcForm = () => {
 
     const formik = useFormik<FormFields>({
         initialValues: {comment: '', location: '', licensePlate: '', state: ''},
+        validationSchema: yup.object({
+            comment: yup.string().required(),
+            location: yup.string().required(),
+            licensePlate: yup.string().required(),
+            state: yup.string().max(2),
+        }),
         onSubmit: (values) => {
             const request = {...values, image: imageKey};
             if (!!imageKey) {

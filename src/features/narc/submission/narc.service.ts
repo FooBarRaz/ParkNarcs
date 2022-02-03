@@ -24,7 +24,7 @@ class NarcService implements INarcService {
 
     fetchImage(imageKey: string): Promise<any> {
         return Storage.get(imageKey, {download: true, level: 'public'})
-            .then(file => URL.createObjectURL(file))
+            .then(file => URL.createObjectURL(file.Body))
             .catch(e => console.error('error fetching ' + imageKey, e)); // get key from Storage.list
     }
 }

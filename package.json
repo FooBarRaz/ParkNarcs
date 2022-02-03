@@ -19,6 +19,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
     "aws-amplify": "^4.3.4",
+    "dayjs": "^1.10.7",
     "faker": "^5.5.3",
     "formik": "^2.2.9",
     "nanoid": "^3.1.30",
@@ -28,7 +29,8 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^6.0.0",
     "react-scripts": "4.0.3",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.5",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,6 +54,7 @@
     ]
   },
   "devDependencies": {
-    "@types/faker": "^5.5.9"
+    "@types/faker": "^5.5.9",
+    "@types/yup": "^0.29.13"
   }
 }
