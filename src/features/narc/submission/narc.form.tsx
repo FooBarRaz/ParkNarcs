@@ -20,7 +20,6 @@ const useStyles = makeStyles({
     inputField: {
         marginBottom: '0.5em'
     }
-
 })
 
 type FormFields = {
@@ -54,7 +53,7 @@ export const NarcForm = () => {
         },
     });
 
-    function resizeImage(file: File): Promise<File> {
+    function resizeImage(file: File): Promise<string> {
         const maxSize = 1280;
         return new Promise(resolve => {
             Resizer.imageFileResizer(file,
@@ -63,25 +62,26 @@ export const NarcForm = () => {
                 'WEBP',
                 100,
                 0,
-                uri => resolve(uri as File),
-                'file')
+                uri => resolve(uri as string),
+                )
         })
     }
 
     async function onUploadImage(e: React.ChangeEvent<HTMLInputElement>) {
         const file = (e.target.files || [])[0];
         const resizedFile = await resizeImage(file);
-        try {
-            let key = nanoid();
-            await Storage.put(key, resizedFile, {
-                contentType: "image/webp", // contentType is optional
-            }).then((result) => {
-                console.log('file upload result: ', result);
-                setImageKey(key);
-            });
-        } catch (error) {
-            console.log("Error uploading file: ", error);
-        }
+        setImageKey(resizedFile)
+        // try {
+            // let key = nanoid();
+        //     await Storage.put(key, resizedFile, {
+        //         contentType: "image/webp", // contentType is optional
+        //     }).then((result) => {
+        //         console.log('file upload result: ', result);
+        //         setImageKey(key);
+        //     });
+        // } catch (error) {
+        //     console.log("Error uploading file: ", error);
+        // }
     }
 
     return (

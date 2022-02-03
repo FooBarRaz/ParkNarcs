@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { fetchReports } from '../narc.slice';
 import { AmplifyS3Image } from '@aws-amplify/ui-react';
 import { LinkFab } from '../../../app/components/LinkFab';
-import { Box } from '@mui/material';
+import {Box, Button} from '@mui/material';
 
 export default function MasonryListing() {
     const dispatch = useDispatch();

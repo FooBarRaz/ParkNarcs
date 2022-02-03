@@ -3,6 +3,7 @@ import {API, graphqlOperation, Storage} from 'aws-amplify';
 import {listNarcs} from "../../../graphql/queries";
 import {NarcReport, NarcReportEntity} from "../types";
 import faker from 'faker';
+import {nanoid} from "nanoid";
 
 interface INarcService {
     narc(input: NarcReport): void;
@@ -14,22 +15,34 @@ interface INarcService {
 
 class NarcService implements INarcService {
     narc(input: NarcReport): void {
-        API.graphql(graphqlOperation(createNarc, {input}))
+        let key = nanoid();
+        const buf = Buffer.from(input.image.replace(/^data:image\/\w+;base64,/, ""),'base64')
+        Storage.put(key, input.image, {
+            contentEncoding: 'base64',
+            contentType: "image/webp", // contentType is optional
+        }).then((result) => {
+            console.log('file upload result: ', result);
+            input.image = result.key;
+            API.graphql(graphqlOperation(createNarc, {input}))
+        }).catch((error) => console.log("Error uploading file: ", error));
     }
 
     async fetchReports(): Promise<Array<NarcReportEntity>> {
         const narcs = await API.graphql({query: listNarcs, authMode: 'API_KEY'});
-        return (narcs as any).data.listNarcs.items;
+        return (narcs as any
+        ).data.listNarcs.items;
     }
 
-    fetchImage(imageKey: string): Promise<any> {
+    fetchImage(imageKey: string):
+        Promise<any> {
         return Storage.get(imageKey, {download: true, level: 'public'})
             .then(file => URL.createObjectURL(file.Body))
             .catch(e => console.error('error fetching ' + imageKey, e)); // get key from Storage.list
     }
 }
 
-class FakeNarcService implements INarcService  {
+class FakeNarcService
+    implements INarcService {
     narc(input: NarcReport) {
         console.log('created fake report');
     }
