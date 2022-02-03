@@ -25,18 +25,11 @@ export const ReportItem = (props: Props) => {
             {/*<AmplifyS3Image imgKey={image} imgProps={{width: '360px', height: '240px'}}/>*/}
             <CardMedia
                 component="img"
-                height="194"
-                width="240"
+                width="480px"
                 image={image}
                 alt={`pig-parker-${id}`}
             />
-            <AmplifyS3Image imgKey={image} imgProps={{style: { width: '100%' } }} />
-            {/*<CardMedia*/}
-            {/*    component="img"*/}
-            {/*    height="194"*/}
-            {/*    image={image}*/}
-            {/*    alt={`pig-parker-${id}`}*/}
-            {/*/>*/}
+            {/*<AmplifyS3Image imgKey={image} imgProps={{style: { width: '100%' } }} />*/}
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                     {location}
