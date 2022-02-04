@@ -15,7 +15,7 @@ interface INarcService {
 
 class NarcService implements INarcService {
     narc(input: NarcReport): void {
-        let key = nanoid();
+        let key = `${nanoid()}.webp`;
         const buf = Buffer.from(input.image.replace(/^data:image\/\w+;base64,/, ""),'base64')
         Storage.put(key, buf, {
             contentEncoding: 'base64',

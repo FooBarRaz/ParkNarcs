@@ -52,7 +52,6 @@ export const NarcForm = () => {
         onSubmit: (values) => {
             const request = {...values, image: imageKey};
             if (!!imageKey) {
-                console.log('submitting...', request);
                 dispatch(narcABitchOut(request));
                 navigate('/');
             }

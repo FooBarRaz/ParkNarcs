@@ -26,7 +26,6 @@ export const narcABitchOut = createAsyncThunk('narcs/narcABitchOut', async (payl
 export const fetchReports = createAsyncThunk(
     'narcs/fetchReports',
     async () => NarcService.fetchReports()
-// )
         .then(reports =>
         Promise.all(reports.map(eachReport => NarcService.fetchImage(eachReport.image).then(imageUrl => {
             return ({
@@ -34,7 +33,6 @@ export const fetchReports = createAsyncThunk(
                 image: imageUrl
             });
         }).catch(e => {
-            // debugger;
             console.error('could not fetch image: ', e.message);
         })))))
 

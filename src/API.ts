@@ -134,7 +134,7 @@ export type ModelNarcFilterInput = {
 
 export type ModelNarcConnection = {
   __typename: "ModelNarcConnection",
-  items?:  Array<Narc | null > | null,
+  items:  Array<Narc | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
@@ -247,7 +247,7 @@ export type ListNarcsQueryVariables = {
 export type ListNarcsQuery = {
   listNarcs?:  {
     __typename: "ModelNarcConnection",
-    items?:  Array< {
+    items:  Array< {
       __typename: "Narc",
       id: string,
       comment: string,
@@ -263,7 +263,7 @@ export type ListNarcsQuery = {
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
-    } | null > | null,
+    } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
@@ -279,7 +279,7 @@ export type SyncNarcsQueryVariables = {
 export type SyncNarcsQuery = {
   syncNarcs?:  {
     __typename: "ModelNarcConnection",
-    items?:  Array< {
+    items:  Array< {
       __typename: "Narc",
       id: string,
       comment: string,
@@ -295,7 +295,7 @@ export type SyncNarcsQuery = {
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
-    } | null > | null,
+    } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
