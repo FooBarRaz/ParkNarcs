@@ -11,7 +11,12 @@ const getItem = (bucket, key) => {
         Key: key
     }
 
-    return s3Client.send(new GetObjectCommand(params)).then(data => data.Body)
+    return s3Client.send(new GetObjectCommand(params)).then(data => {
+        if (data.Body) {
+            console.log(`Found object ${bucket}/${key}`);
+        }
+        return data.Body;
+    })
 }
 
 const putItem = (bucket, key, item) => {
