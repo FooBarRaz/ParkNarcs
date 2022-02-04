@@ -1,0 +1,15 @@
+{
+  "resourceName": "parkNarcsImageStore",
+  "bucketName": "parknarcsimagestore",
+  "policyUUID": "d3984319",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger30c01cf3"
+}

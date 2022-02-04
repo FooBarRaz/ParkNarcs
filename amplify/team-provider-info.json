@@ -20,6 +20,12 @@
           "appId": "dj96wtfph6dis",
           "type": "cicd"
         }
+      },
+      "function": {
+        "S3Trigger30c01cf3": {
+          "deploymentBucketName": "amplify-parknarcs-dev-202701-deployment",
+          "s3Key": "amplify-builds/S3Trigger30c01cf3-526a6958736f6d723352-build.zip"
+        }
       }
     }
   }
