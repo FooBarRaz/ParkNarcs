@@ -16,6 +16,7 @@ export const narcABitchOut = createAsyncThunk('narcs/narcABitchOut', async (payl
     return userId ?
         NarcService.narc({
             ...payload,
+            licensePlate: payload.licensePlate.toUpperCase(),
             date: new Date().toISOString(),
             postedBy: userId
         })
