@@ -60,11 +60,6 @@
     }
   },
   "function": {
-    "S3Triggerec386de7": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true
-    },
     "S3Trigger30c01cf3": {
       "service": "Lambda",
       "providerPlugin": "awscloudformation",

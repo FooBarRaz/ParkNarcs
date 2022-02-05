@@ -20,14 +20,14 @@ export const Navbar = (props: Props) => {
         <AppBar className={navbar} position="fixed">
             <Toolbar>
                 {location.pathname !== '/' && <BackButton />}
-                <NavLink to="/" style={{textDecoration: 'none'}}>
+                {/*<NavLink to="/" style={{textDecoration: 'none'}}>*/}
                     <Box component="span">
                         <img src={"car-parking-svgrepo-com.svg"} alt={"logo"} width="18px" color="white"/>
                         <Typography sx={{fontWeight: 'bold'}} variant="h6" component="span">
                             Park Narcs
                         </Typography>
                     </Box>
-                </NavLink>
+                {/*</NavLink>*/}
                 <Box sx={{ml: 'auto', mr: 0}}>
                     <MyAccountButton/>
                 </Box>
