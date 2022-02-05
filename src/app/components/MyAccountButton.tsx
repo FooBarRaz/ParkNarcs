@@ -1,10 +1,11 @@
 import * as React from "react";
-import {IconButton, Menu, MenuItem} from "@mui/material";
+import {Box, IconButton, Menu, MenuItem, Typography} from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
 import {AmplifySignOut} from "@aws-amplify/ui-react";
 import {useSelector} from "react-redux";
 import {RootState} from "../store";
 import { Link, useNavigate } from "react-router-dom";
+import './buttons.css';
 
 export function MyAccountButton() {
     const {username, signedIn} = useSelector((state: RootState) => state.user);
@@ -46,7 +47,9 @@ export function MyAccountButton() {
             onClose={handleClose}
         ><MenuItem>
             {signedIn
-                ? <AmplifySignOut handleAuthStateChange={() => { handleClose(); navigate('/'); } } />
+                ? <Box>
+                    <Typography variant={"h6"}>{username}</Typography>
+                    <AmplifySignOut class="amplify-button" handleAuthStateChange={() => { handleClose(); navigate('/'); } } /></Box>
                 : <Link to="/signin">
                     <button onClick={handleClose}> Sign In
                     </button>

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
-import { useDispatch } from "react-redux";
-import { narcABitchOut } from "../narc.slice";
-import { useNavigate } from 'react-router-dom';
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import { makeStyles } from "@mui/styles";
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import React, {useState} from 'react';
+import {useFormik} from 'formik';
+import {useDispatch} from "react-redux";
+import {narcABitchOut} from "../narc.slice";
+import {useNavigate} from 'react-router-dom';
+import {withAuthenticator} from "@aws-amplify/ui-react";
+import {makeStyles} from "@mui/styles";
+import {Box, Button, FormControl, MenuItem, TextField} from '@mui/material';
 import * as yup from 'yup';
-import { US_STATES } from '../../../data/states';
+import {US_STATES} from '../../../data/states';
 import Resizer from 'react-image-file-resizer';
-import { ImagePreview } from './ImagePreview';
+import {ImagePreview} from './ImagePreview';
 import CameraIcon from '@mui/icons-material/CameraAlt';
 
 const useStyles = makeStyles({
