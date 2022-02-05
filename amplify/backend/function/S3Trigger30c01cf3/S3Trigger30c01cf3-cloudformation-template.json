@@ -10,6 +10,9 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "imageWidth": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -53,6 +56,9 @@
           "Variables": {
             "ENV": {
               "Ref": "env"
+            },
+            "IMAGE_WIDTH": {
+              "Ref": "imageWidth"
             }
           }
         },

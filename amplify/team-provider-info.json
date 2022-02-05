@@ -24,7 +24,8 @@
       "function": {
         "S3Trigger30c01cf3": {
           "deploymentBucketName": "amplify-parknarcs-dev-202701-deployment",
-          "s3Key": "amplify-builds/S3Trigger30c01cf3-486668467a356a303772-build.zip"
+          "s3Key": "amplify-builds/S3Trigger30c01cf3-7930674f69734e792b39-build.zip",
+          "imageWidth": "1280"
         },
         "parknarcsdbTrigger5d371981": {
           "deploymentBucketName": "amplify-parknarcs-dev-202701-deployment",

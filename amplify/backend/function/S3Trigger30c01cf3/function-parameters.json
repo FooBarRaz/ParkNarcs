@@ -1,0 +1,8 @@
+{
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "imageWidth",
+      "environmentVariableName": "IMAGE_WIDTH"
+    }
+  ]
+}
