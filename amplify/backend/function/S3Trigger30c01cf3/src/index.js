@@ -11,6 +11,8 @@ exports.handler = function (event, context) {
     const { functionName } = context;
 
 
+    // This is to prevent an infinite loop wherein updating the image triggers the lambda again
+    // If the lambda was triggered by the lambda (principalId) then we ignore this event
     if (!principalId.includes(functionName)) {
         getItem(bucket, key)
             .then(stream => streamToBuffer(stream))
