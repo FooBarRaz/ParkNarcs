@@ -10,10 +10,12 @@ import * as yup from 'yup';
 import { US_STATES } from '../../../data/states';
 import Resizer from 'react-image-file-resizer';
 import { ImagePreview } from './ImagePreview';
+import CameraIcon from '@mui/icons-material/CameraAlt';
 
 const useStyles = makeStyles({
     content: {
         margin: '1rem',
+        marginTop: '5rem',
         justifyContent: 'space-around'
     },
     inputField: {
@@ -80,7 +82,7 @@ export const NarcForm = () => {
 
     return (
         <div>
-            <Typography variant={'h6'}>Narc 'em out</Typography>
+            {/*<Typography variant={'h6'}>Narc 'em out</Typography>*/}
             <form className={content} onSubmit={formik.handleSubmit}>
                 {
                     (['comment', 'location', 'licensePlate'] as Array<keyof FormFields>).map((field: keyof FormFields) => (
@@ -97,22 +99,25 @@ export const NarcForm = () => {
                                 onChange={formik.handleChange}
                                 error={formik.touched[field] && Boolean(formik.errors[field])}
                                 helperText={formik.touched[field] && formik.errors[field]}
+                                variant="standard"
                             />
                         </Box>
                     ))
                 }
                 <Box className={inputFieldStyles}>
                     <FormControl fullWidth>
-                        <InputLabel>{formFieldLabels['state']}</InputLabel>
-                        <Select
+                        <TextField
+                            select
                             value={US_STATES[formik.values.state as keyof typeof US_STATES]}
                             name="state"
                             onChange={formik.handleChange}
+                            label={formFieldLabels['state']}
+                            variant="standard"
                         >
                             {Object.entries(US_STATES).map(([stateAbbrv, stateLabel]) => {
                                 return <MenuItem value={stateAbbrv}>{stateLabel}</MenuItem>
                             })}
-                        </Select>
+                        </TextField>
                     </FormControl>
                 </Box>
                 <Box className={inputFieldStyles}>
@@ -126,6 +131,7 @@ export const NarcForm = () => {
                                 onChange={onUploadImage}
                                 multiple type="file"/>
                             <Button variant="contained" component="span">
+                                <CameraIcon sx={{mr: 1}}/>
                                 Upload Image
                             </Button>
                         </label>

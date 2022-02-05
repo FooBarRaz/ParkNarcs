@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../store";
 import {MyAccountButton} from "./MyAccountButton";
 import {useLocation, useNavigate} from "react-router-dom";
-import { makeStyles, withStyles } from '@mui/styles';
+import {makeStyles, withStyles} from '@mui/styles';
 
 type Props = {};
 
@@ -15,7 +15,6 @@ const useStyles = makeStyles({
         boxShadow: '12px'
     }
 });
-
 
 
 const BackButton = () => {
@@ -45,10 +44,13 @@ export const Navbar = (props: Props) => {
                             : <BackButton/>
                     }
                 </IconButton>
-                <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
+                <img src={"car-parking-svgrepo-com.svg"} alt={"logo"} width="24px" color="white" />
+                <Typography variant="h6" component="div">
                     Park Narcs
                 </Typography>
-                <MyAccountButton/>
+                <Box sx={{ ml: 'auto', mr: 0 }}>
+                    <MyAccountButton/>
+                </Box>
             </Toolbar>
         </AppBar>
     );
