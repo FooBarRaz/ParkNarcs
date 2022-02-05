@@ -1,12 +1,8 @@
-import {AppBar, Box, IconButton, Toolbar, Typography} from '@mui/material';
+import {AppBar, Box, Toolbar, Typography} from '@mui/material';
 import * as React from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
-import BackIcon from '@mui/icons-material/ArrowBack';
-import {useSelector} from "react-redux";
-import {RootState} from "../store";
 import {MyAccountButton} from "./MyAccountButton";
-import {Link, NavLink, useLocation, useNavigate} from "react-router-dom";
-import {makeStyles, withStyles} from '@mui/styles';
+import {NavLink, useLocation} from "react-router-dom";
+import {makeStyles} from '@mui/styles';
 import BackButton from "./BackButton";
 
 type Props = {};
