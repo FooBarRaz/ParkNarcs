@@ -1,10 +1,42 @@
 {
+  "api": {
+    "parknarcs": {
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 365,
+                "description": "parkNarcsWebClient"
+              },
+              "authenticationType": "API_KEY"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authparknarcsf3377c15"
+            }
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "parknarcsf3377c15": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
+      "customAuth": false,
       "dependsOn": [],
-      "customAuth": false
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "S3Trigger30c01cf3": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "hosting": {
@@ -13,57 +45,83 @@
       "type": "cicd"
     }
   },
-  "api": {
-    "parknarcs": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authparknarcsf3377c15"
-            }
-          },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "API_KEY",
-              "apiKeyConfig": {
-                "apiKeyExpirationDays": 365,
-                "description": "parkNarcsWebClient"
-              }
-            }
-          ]
-        }
-      }
-    }
-  },
-  "storage": {
-    "parknarcsdb": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "parkNarcsImageStore": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
+  "parameters": {
+    "AMPLIFY_function_S3Trigger30c01cf3_deploymentBucketName": {
+      "usedBy": [
         {
           "category": "function",
-          "resourceName": "S3Trigger30c01cf3",
-          "attributes": [
-            "Name",
-            "Arn",
-            "LambdaExecutionRole"
-          ]
+          "resourceName": "S3Trigger30c01cf3"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Trigger30c01cf3_imageWidth": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger30c01cf3"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Trigger30c01cf3_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger30c01cf3"
+        }
+      ]
+    },
+    "AMPLIFY_function_parknarcsdbTrigger5d371981_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "parknarcsdbTrigger5d371981"
+        }
+      ]
+    },
+    "AMPLIFY_function_parknarcsdbTrigger5d371981_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "parknarcsdbTrigger5d371981"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
         }
       ]
     }
   },
-  "function": {
-    "S3Trigger30c01cf3": {
-      "service": "Lambda",
+  "storage": {
+    "parkNarcsImageStore": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ],
+          "category": "function",
+          "resourceName": "S3Trigger30c01cf3"
+        }
+      ],
       "providerPlugin": "awscloudformation",
-      "build": true
+      "service": "S3"
+    },
+    "parknarcsdb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }

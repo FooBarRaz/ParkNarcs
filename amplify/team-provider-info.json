@@ -31,6 +31,10 @@
           "deploymentBucketName": "amplify-parknarcs-dev-202701-deployment",
           "s3Key": "amplify-builds/parknarcsdbTrigger5d371981-4c7a4a7475632f586536-build.zip"
         }
+      },
+      "storage": {
+        "parknarcsdb": {},
+        "parkNarcsImageStore": {}
       }
     }
   }
