@@ -32,13 +32,7 @@
       "service": "Cognito"
     }
   },
-  "function": {
-    "S3Trigger30c01cf3": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
+  "function": {},
   "hosting": {
     "amplifyhosting": {
       "service": "amplifyhosting",
@@ -46,46 +40,6 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_S3Trigger30c01cf3_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Trigger30c01cf3"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Trigger30c01cf3_imageWidth": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Trigger30c01cf3"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Trigger30c01cf3_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Trigger30c01cf3"
-        }
-      ]
-    },
-    "AMPLIFY_function_parknarcsdbTrigger5d371981_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "parknarcsdbTrigger5d371981"
-        }
-      ]
-    },
-    "AMPLIFY_function_parknarcsdbTrigger5d371981_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "parknarcsdbTrigger5d371981"
-        }
-      ]
-    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {
@@ -105,17 +59,7 @@
   },
   "storage": {
     "parkNarcsImageStore": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn",
-            "LambdaExecutionRole"
-          ],
-          "category": "function",
-          "resourceName": "S3Trigger30c01cf3"
-        }
-      ],
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
     },

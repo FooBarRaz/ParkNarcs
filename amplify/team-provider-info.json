@@ -37,5 +37,36 @@
         "parkNarcsImageStore": {}
       }
     }
+  },
+  "sandbox": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-parknarcs-sandbox-113158-authRole",
+      "UnauthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-sandbox-113158-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-sandbox-113158-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-parknarcs-sandbox-113158-deployment",
+      "UnauthRoleName": "amplify-parknarcs-sandbox-113158-unauthRole",
+      "StackName": "amplify-parknarcs-sandbox-113158",
+      "StackId": "arn:aws:cloudformation:us-east-1:801215360931:stack/amplify-parknarcs-sandbox-113158/6dd636c0-bc68-11ee-8d33-121f65ab2a91",
+      "AmplifyAppId": "dthzb0v6yhy57"
+    },
+    "categories": {
+      "auth": {
+        "parknarcsf3377c15": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dthzb0v6yhy57",
+          "type": "cicd"
+        }
+      },
+      "api": {
+        "parknarcs": {}
+      },
+      "storage": {
+        "parkNarcsImageStore": {},
+        "parknarcsdb": {}
+      }
+    }
   }
 }

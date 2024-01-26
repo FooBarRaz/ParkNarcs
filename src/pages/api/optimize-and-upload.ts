@@ -3,7 +3,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import AWS from 'aws-sdk';
 import multer from 'multer';
-import sharp from 'sharp'
+// import sharp from 'sharp'
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -30,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const file = req.body.image as Express.Multer.File;
       try {
         console.log('attempting to optimize image...');
-        const optimizedImage = await sharp(file.buffer).resize(800).toBuffer();
+        const optimizedImage = file.buffer; //await sharp(file.buffer).resize(800).toBuffer();
 
         const params = {
           Bucket: process.env.S3_BUCKET_NAME as string,

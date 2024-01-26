@@ -10,6 +10,5 @@
     "CREATE_AND_UPDATE",
     "READ",
     "DELETE"
-  ],
-  "triggerFunction": "S3Trigger30c01cf3"
+  ]
 }
