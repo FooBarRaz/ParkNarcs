@@ -3,12 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install 18
-        - nvm use 18
+        - nvm install --lts
+        - nvm use --lts
         - npm ci
     build:
       commands:
-        - nvm use 18
+        - nvm use --lts
         - npm run build
   artifacts:
     baseDirectory: .next
