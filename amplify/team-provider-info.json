@@ -28,6 +28,12 @@
       "storage": {
         "parkNarcsImagesBucket": {},
         "parknarcsDb": {}
+      },
+      "api": {
+        "parknarcs": {}
+      },
+      "custom": {
+        "imagesCloudFront": {}
       }
     }
   }

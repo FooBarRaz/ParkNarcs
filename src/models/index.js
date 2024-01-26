@@ -4,8 +4,10 @@ import { schema } from './schema';
 
 
 
-const { Narc } = initSchema(schema);
+const { Post, Comment, CreatePostResponse } = initSchema(schema);
 
 export {
-  Narc
+  Post,
+  Comment,
+  CreatePostResponse
 };

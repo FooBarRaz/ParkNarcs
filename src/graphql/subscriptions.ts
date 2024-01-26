@@ -8,72 +8,153 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateNarc = /* GraphQL */ `subscription OnCreateNarc {
-  onCreateNarc {
+export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+  onCreatePost(filter: $filter) {
     id
-    comment
-    date
-    location
-    licensePlate
-    state
+    title
     image
-    postedBy
+    comments {
+      nextToken
+      startedAt
+      __typename
+    }
+    createdAt
+    updatedAt
     _version
     _deleted
     _lastChangedAt
-    createdAt
-    updatedAt
-    owner
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateNarcSubscriptionVariables,
-  APITypes.OnCreateNarcSubscription
+  APITypes.OnCreatePostSubscriptionVariables,
+  APITypes.OnCreatePostSubscription
 >;
-export const onUpdateNarc = /* GraphQL */ `subscription OnUpdateNarc {
-  onUpdateNarc {
+export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+  onUpdatePost(filter: $filter) {
     id
-    comment
-    date
-    location
-    licensePlate
-    state
+    title
     image
-    postedBy
+    comments {
+      nextToken
+      startedAt
+      __typename
+    }
+    createdAt
+    updatedAt
     _version
     _deleted
     _lastChangedAt
-    createdAt
-    updatedAt
-    owner
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateNarcSubscriptionVariables,
-  APITypes.OnUpdateNarcSubscription
+  APITypes.OnUpdatePostSubscriptionVariables,
+  APITypes.OnUpdatePostSubscription
 >;
-export const onDeleteNarc = /* GraphQL */ `subscription OnDeleteNarc {
-  onDeleteNarc {
+export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+  onDeletePost(filter: $filter) {
     id
-    comment
-    date
-    location
-    licensePlate
-    state
+    title
     image
-    postedBy
+    comments {
+      nextToken
+      startedAt
+      __typename
+    }
+    createdAt
+    updatedAt
     _version
     _deleted
     _lastChangedAt
-    createdAt
-    updatedAt
-    owner
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteNarcSubscriptionVariables,
-  APITypes.OnDeleteNarcSubscription
+  APITypes.OnDeletePostSubscriptionVariables,
+  APITypes.OnDeletePostSubscription
+>;
+export const onCreateComment = /* GraphQL */ `subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onCreateComment(filter: $filter) {
+    id
+    post {
+      id
+      title
+      image
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postCommentsId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateCommentSubscriptionVariables,
+  APITypes.OnCreateCommentSubscription
+>;
+export const onUpdateComment = /* GraphQL */ `subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+  onUpdateComment(filter: $filter) {
+    id
+    post {
+      id
+      title
+      image
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postCommentsId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateCommentSubscriptionVariables,
+  APITypes.OnUpdateCommentSubscription
+>;
+export const onDeleteComment = /* GraphQL */ `subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+  onDeleteComment(filter: $filter) {
+    id
+    post {
+      id
+      title
+      image
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postCommentsId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteCommentSubscriptionVariables,
+  APITypes.OnDeleteCommentSubscription
 >;

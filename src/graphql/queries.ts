@@ -8,47 +8,40 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getNarc = /* GraphQL */ `query GetNarc($id: ID!) {
-  getNarc(id: $id) {
+export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
+  getPost(id: $id) {
     id
-    comment
-    date
-    location
-    licensePlate
-    state
+    title
     image
-    postedBy
+    comments {
+      nextToken
+      startedAt
+      __typename
+    }
+    createdAt
+    updatedAt
     _version
     _deleted
     _lastChangedAt
-    createdAt
-    updatedAt
-    owner
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetNarcQueryVariables, APITypes.GetNarcQuery>;
-export const listNarcs = /* GraphQL */ `query ListNarcs(
-  $filter: ModelNarcFilterInput
+` as GeneratedQuery<APITypes.GetPostQueryVariables, APITypes.GetPostQuery>;
+export const listPosts = /* GraphQL */ `query ListPosts(
+  $filter: ModelPostFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listNarcs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      comment
-      date
-      location
-      licensePlate
-      state
+      title
       image
-      postedBy
+      createdAt
+      updatedAt
       _version
       _deleted
       _lastChangedAt
-      createdAt
-      updatedAt
-      owner
       __typename
     }
     nextToken
@@ -56,14 +49,14 @@ export const listNarcs = /* GraphQL */ `query ListNarcs(
     __typename
   }
 }
-` as GeneratedQuery<APITypes.ListNarcsQueryVariables, APITypes.ListNarcsQuery>;
-export const syncNarcs = /* GraphQL */ `query SyncNarcs(
-  $filter: ModelNarcFilterInput
+` as GeneratedQuery<APITypes.ListPostsQueryVariables, APITypes.ListPostsQuery>;
+export const syncPosts = /* GraphQL */ `query SyncPosts(
+  $filter: ModelPostFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncNarcs(
+  syncPosts(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -71,19 +64,13 @@ export const syncNarcs = /* GraphQL */ `query SyncNarcs(
   ) {
     items {
       id
-      comment
-      date
-      location
-      licensePlate
-      state
+      title
       image
-      postedBy
+      createdAt
+      updatedAt
       _version
       _deleted
       _lastChangedAt
-      createdAt
-      updatedAt
-      owner
       __typename
     }
     nextToken
@@ -91,4 +78,90 @@ export const syncNarcs = /* GraphQL */ `query SyncNarcs(
     __typename
   }
 }
-` as GeneratedQuery<APITypes.SyncNarcsQueryVariables, APITypes.SyncNarcsQuery>;
+` as GeneratedQuery<APITypes.SyncPostsQueryVariables, APITypes.SyncPostsQuery>;
+export const getComment = /* GraphQL */ `query GetComment($id: ID!) {
+  getComment(id: $id) {
+    id
+    post {
+      id
+      title
+      image
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postCommentsId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetCommentQueryVariables,
+  APITypes.GetCommentQuery
+>;
+export const listComments = /* GraphQL */ `query ListComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postCommentsId
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListCommentsQueryVariables,
+  APITypes.ListCommentsQuery
+>;
+export const syncComments = /* GraphQL */ `query SyncComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncComments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postCommentsId
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.SyncCommentsQueryVariables,
+  APITypes.SyncCommentsQuery
+>;

@@ -2,29 +2,27 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateNarcInput = {
+export type CreatePostResponse = {
+  __typename: "CreatePostResponse",
+  id: string,
+  title: string,
+  s3PreSignedUrl: string,
+};
+
+export type CreatePostInput = {
   id?: string | null,
-  comment: string,
-  date: string,
-  location: string,
-  licensePlate: string,
-  state: string,
-  image: string,
-  postedBy: string,
+  title: string,
+  image?: string | null,
   _version?: number | null,
 };
 
-export type ModelNarcConditionInput = {
-  comment?: ModelStringInput | null,
-  date?: ModelStringInput | null,
-  location?: ModelStringInput | null,
-  licensePlate?: ModelStringInput | null,
-  state?: ModelStringInput | null,
+export type ModelPostConditionInput = {
+  title?: ModelStringInput | null,
   image?: ModelStringInput | null,
-  postedBy?: ModelIDInput | null,
-  and?: Array< ModelNarcConditionInput | null > | null,
-  or?: Array< ModelNarcConditionInput | null > | null,
-  not?: ModelNarcConditionInput | null,
+  and?: Array< ModelPostConditionInput | null > | null,
+  or?: Array< ModelPostConditionInput | null > | null,
+  not?: ModelPostConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelStringInput = {
@@ -67,6 +65,74 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type Post = {
+  __typename: "Post",
+  id: string,
+  title: string,
+  image?: string | null,
+  comments?: ModelCommentConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type ModelCommentConnection = {
+  __typename: "ModelCommentConnection",
+  items:  Array<Comment | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type Comment = {
+  __typename: "Comment",
+  id: string,
+  post?: Post | null,
+  content: string,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  postCommentsId?: string | null,
+};
+
+export type UpdatePostInput = {
+  id: string,
+  title?: string | null,
+  image?: string | null,
+  _version?: number | null,
+};
+
+export type DeletePostInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateCommentInput = {
+  id?: string | null,
+  content: string,
+  _version?: number | null,
+  postCommentsId?: string | null,
+};
+
+export type ModelCommentConditionInput = {
+  content?: ModelStringInput | null,
+  and?: Array< ModelCommentConditionInput | null > | null,
+  or?: Array< ModelCommentConditionInput | null > | null,
+  not?: ModelCommentConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
+  postCommentsId?: ModelIDInput | null,
+};
+
 export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
@@ -83,289 +149,573 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type Narc = {
-  __typename: "Narc",
+export type UpdateCommentInput = {
   id: string,
-  comment: string,
-  date: string,
-  location: string,
-  licensePlate: string,
-  state: string,
-  image: string,
-  postedBy: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  createdAt: string,
-  updatedAt: string,
-  owner?: string | null,
-};
-
-export type UpdateNarcInput = {
-  id: string,
-  comment?: string | null,
-  date?: string | null,
-  location?: string | null,
-  licensePlate?: string | null,
-  state?: string | null,
-  image?: string | null,
-  postedBy?: string | null,
+  content?: string | null,
   _version?: number | null,
+  postCommentsId?: string | null,
 };
 
-export type DeleteNarcInput = {
+export type DeleteCommentInput = {
   id: string,
   _version?: number | null,
 };
 
-export type ModelNarcFilterInput = {
+export type ModelPostFilterInput = {
   id?: ModelIDInput | null,
-  comment?: ModelStringInput | null,
-  date?: ModelStringInput | null,
-  location?: ModelStringInput | null,
-  licensePlate?: ModelStringInput | null,
-  state?: ModelStringInput | null,
+  title?: ModelStringInput | null,
   image?: ModelStringInput | null,
-  postedBy?: ModelIDInput | null,
-  and?: Array< ModelNarcFilterInput | null > | null,
-  or?: Array< ModelNarcFilterInput | null > | null,
-  not?: ModelNarcFilterInput | null,
+  and?: Array< ModelPostFilterInput | null > | null,
+  or?: Array< ModelPostFilterInput | null > | null,
+  not?: ModelPostFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
-export type ModelNarcConnection = {
-  __typename: "ModelNarcConnection",
-  items:  Array<Narc | null >,
+export type ModelPostConnection = {
+  __typename: "ModelPostConnection",
+  items:  Array<Post | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
 
-export type CreateNarcMutationVariables = {
-  input: CreateNarcInput,
-  condition?: ModelNarcConditionInput | null,
+export type ModelCommentFilterInput = {
+  id?: ModelIDInput | null,
+  content?: ModelStringInput | null,
+  and?: Array< ModelCommentFilterInput | null > | null,
+  or?: Array< ModelCommentFilterInput | null > | null,
+  not?: ModelCommentFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
+  postCommentsId?: ModelIDInput | null,
 };
 
-export type CreateNarcMutation = {
-  createNarc?:  {
-    __typename: "Narc",
+export type ModelSubscriptionPostFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  title?: ModelSubscriptionStringInput | null,
+  image?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionPostFilterInput | null > | null,
+  or?: Array< ModelSubscriptionPostFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelSubscriptionIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionCommentFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  content?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionCommentFilterInput | null > | null,
+  or?: Array< ModelSubscriptionCommentFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type HandleCreatePostMutationVariables = {
+  title: string,
+};
+
+export type HandleCreatePostMutation = {
+  handleCreatePost?:  {
+    __typename: "CreatePostResponse",
     id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    image: string,
-    postedBy: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
+    title: string,
+    s3PreSignedUrl: string,
   } | null,
 };
 
-export type UpdateNarcMutationVariables = {
-  input: UpdateNarcInput,
-  condition?: ModelNarcConditionInput | null,
+export type CreatePostMutationVariables = {
+  input: CreatePostInput,
+  condition?: ModelPostConditionInput | null,
 };
 
-export type UpdateNarcMutation = {
-  updateNarc?:  {
-    __typename: "Narc",
+export type CreatePostMutation = {
+  createPost?:  {
+    __typename: "Post",
     id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    image: string,
-    postedBy: string,
+    title: string,
+    image?: string | null,
+    comments?:  {
+      __typename: "ModelCommentConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type DeleteNarcMutationVariables = {
-  input: DeleteNarcInput,
-  condition?: ModelNarcConditionInput | null,
+export type UpdatePostMutationVariables = {
+  input: UpdatePostInput,
+  condition?: ModelPostConditionInput | null,
 };
 
-export type DeleteNarcMutation = {
-  deleteNarc?:  {
-    __typename: "Narc",
+export type UpdatePostMutation = {
+  updatePost?:  {
+    __typename: "Post",
     id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    image: string,
-    postedBy: string,
+    title: string,
+    image?: string | null,
+    comments?:  {
+      __typename: "ModelCommentConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type GetNarcQueryVariables = {
+export type DeletePostMutationVariables = {
+  input: DeletePostInput,
+  condition?: ModelPostConditionInput | null,
+};
+
+export type DeletePostMutation = {
+  deletePost?:  {
+    __typename: "Post",
+    id: string,
+    title: string,
+    image?: string | null,
+    comments?:  {
+      __typename: "ModelCommentConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type CreateCommentMutationVariables = {
+  input: CreateCommentInput,
+  condition?: ModelCommentConditionInput | null,
+};
+
+export type CreateCommentMutation = {
+  createComment?:  {
+    __typename: "Comment",
+    id: string,
+    post?:  {
+      __typename: "Post",
+      id: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    postCommentsId?: string | null,
+  } | null,
+};
+
+export type UpdateCommentMutationVariables = {
+  input: UpdateCommentInput,
+  condition?: ModelCommentConditionInput | null,
+};
+
+export type UpdateCommentMutation = {
+  updateComment?:  {
+    __typename: "Comment",
+    id: string,
+    post?:  {
+      __typename: "Post",
+      id: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    postCommentsId?: string | null,
+  } | null,
+};
+
+export type DeleteCommentMutationVariables = {
+  input: DeleteCommentInput,
+  condition?: ModelCommentConditionInput | null,
+};
+
+export type DeleteCommentMutation = {
+  deleteComment?:  {
+    __typename: "Comment",
+    id: string,
+    post?:  {
+      __typename: "Post",
+      id: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    postCommentsId?: string | null,
+  } | null,
+};
+
+export type GetPostQueryVariables = {
   id: string,
 };
 
-export type GetNarcQuery = {
-  getNarc?:  {
-    __typename: "Narc",
+export type GetPostQuery = {
+  getPost?:  {
+    __typename: "Post",
     id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    image: string,
-    postedBy: string,
+    title: string,
+    image?: string | null,
+    comments?:  {
+      __typename: "ModelCommentConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
   } | null,
 };
 
-export type ListNarcsQueryVariables = {
-  filter?: ModelNarcFilterInput | null,
+export type ListPostsQueryVariables = {
+  filter?: ModelPostFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListNarcsQuery = {
-  listNarcs?:  {
-    __typename: "ModelNarcConnection",
+export type ListPostsQuery = {
+  listPosts?:  {
+    __typename: "ModelPostConnection",
     items:  Array< {
-      __typename: "Narc",
+      __typename: "Post",
       id: string,
-      comment: string,
-      date: string,
-      location: string,
-      licensePlate: string,
-      state: string,
-      image: string,
-      postedBy: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
 };
 
-export type SyncNarcsQueryVariables = {
-  filter?: ModelNarcFilterInput | null,
+export type SyncPostsQueryVariables = {
+  filter?: ModelPostFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
   lastSync?: number | null,
 };
 
-export type SyncNarcsQuery = {
-  syncNarcs?:  {
-    __typename: "ModelNarcConnection",
+export type SyncPostsQuery = {
+  syncPosts?:  {
+    __typename: "ModelPostConnection",
     items:  Array< {
-      __typename: "Narc",
+      __typename: "Post",
       id: string,
-      comment: string,
-      date: string,
-      location: string,
-      licensePlate: string,
-      state: string,
-      image: string,
-      postedBy: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
 };
 
-export type OnCreateNarcSubscriptionVariables = {
+export type GetCommentQueryVariables = {
+  id: string,
 };
 
-export type OnCreateNarcSubscription = {
-  onCreateNarc?:  {
-    __typename: "Narc",
+export type GetCommentQuery = {
+  getComment?:  {
+    __typename: "Comment",
     id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    image: string,
-    postedBy: string,
+    post?:  {
+      __typename: "Post",
+      id: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
+    postCommentsId?: string | null,
   } | null,
 };
 
-export type OnUpdateNarcSubscriptionVariables = {
+export type ListCommentsQueryVariables = {
+  filter?: ModelCommentFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type OnUpdateNarcSubscription = {
-  onUpdateNarc?:  {
-    __typename: "Narc",
-    id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    image: string,
-    postedBy: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
-    owner?: string | null,
+export type ListCommentsQuery = {
+  listComments?:  {
+    __typename: "ModelCommentConnection",
+    items:  Array< {
+      __typename: "Comment",
+      id: string,
+      content: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      postCommentsId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
-export type OnDeleteNarcSubscriptionVariables = {
+export type SyncCommentsQueryVariables = {
+  filter?: ModelCommentFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
 };
 
-export type OnDeleteNarcSubscription = {
-  onDeleteNarc?:  {
-    __typename: "Narc",
+export type SyncCommentsQuery = {
+  syncComments?:  {
+    __typename: "ModelCommentConnection",
+    items:  Array< {
+      __typename: "Comment",
+      id: string,
+      content: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      postCommentsId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type OnCreatePostSubscriptionVariables = {
+  filter?: ModelSubscriptionPostFilterInput | null,
+};
+
+export type OnCreatePostSubscription = {
+  onCreatePost?:  {
+    __typename: "Post",
     id: string,
-    comment: string,
-    date: string,
-    location: string,
-    licensePlate: string,
-    state: string,
-    image: string,
-    postedBy: string,
+    title: string,
+    image?: string | null,
+    comments?:  {
+      __typename: "ModelCommentConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+  } | null,
+};
+
+export type OnUpdatePostSubscriptionVariables = {
+  filter?: ModelSubscriptionPostFilterInput | null,
+};
+
+export type OnUpdatePostSubscription = {
+  onUpdatePost?:  {
+    __typename: "Post",
+    id: string,
+    title: string,
+    image?: string | null,
+    comments?:  {
+      __typename: "ModelCommentConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
-    owner?: string | null,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnDeletePostSubscriptionVariables = {
+  filter?: ModelSubscriptionPostFilterInput | null,
+};
+
+export type OnDeletePostSubscription = {
+  onDeletePost?:  {
+    __typename: "Post",
+    id: string,
+    title: string,
+    image?: string | null,
+    comments?:  {
+      __typename: "ModelCommentConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnCreateCommentSubscriptionVariables = {
+  filter?: ModelSubscriptionCommentFilterInput | null,
+};
+
+export type OnCreateCommentSubscription = {
+  onCreateComment?:  {
+    __typename: "Comment",
+    id: string,
+    post?:  {
+      __typename: "Post",
+      id: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    postCommentsId?: string | null,
+  } | null,
+};
+
+export type OnUpdateCommentSubscriptionVariables = {
+  filter?: ModelSubscriptionCommentFilterInput | null,
+};
+
+export type OnUpdateCommentSubscription = {
+  onUpdateComment?:  {
+    __typename: "Comment",
+    id: string,
+    post?:  {
+      __typename: "Post",
+      id: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    postCommentsId?: string | null,
+  } | null,
+};
+
+export type OnDeleteCommentSubscriptionVariables = {
+  filter?: ModelSubscriptionCommentFilterInput | null,
+};
+
+export type OnDeleteCommentSubscription = {
+  onDeleteComment?:  {
+    __typename: "Comment",
+    id: string,
+    post?:  {
+      __typename: "Post",
+      id: string,
+      title: string,
+      image?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    postCommentsId?: string | null,
   } | null,
 };
