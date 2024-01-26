@@ -2,29 +2,48 @@ export type AmplifyDependentResourcesAttributes = {
   "api": {
     "parknarcs": {
       "GraphQLAPIEndpointOutput": "string",
-      "GraphQLAPIIdOutput": "string"
+      "GraphQLAPIIdOutput": "string",
+      "GraphQLAPIKeyOutput": "string"
     }
   },
   "auth": {
-    "parknarcsf3377c15": {
+    "parknarcs500dcef4": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
-      "CreatedSNSRole": "string",
-      "HostedUIDomain": "string",
       "IdentityPoolId": "string",
       "IdentityPoolName": "string",
-      "OAuthMetadata": "string",
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
     }
   },
+  "custom": {
+    "imagesCloudFront": {
+      "myCloudFrontDistributionDomainName": "string"
+    }
+  },
+  "function": {
+    "handleCreatePost": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "resizeImages": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    }
+  },
   "storage": {
-    "parkNarcsImageStore": {
+    "parkNarcsImagesBucket": {
       "BucketName": "string",
       "Region": "string"
     },
-    "parknarcsdb": {
+    "parknarcsDb": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",

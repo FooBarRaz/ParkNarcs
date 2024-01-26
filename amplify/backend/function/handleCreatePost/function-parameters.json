@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "storage": {
+      "parkNarcsImagesBucket": [
+        "create",
+        "read",
+        "update"
+      ],
+      "parknarcsDb": [
+        "create",
+        "read",
+        "update"
+      ],
+      "Post:@model(appsync)": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

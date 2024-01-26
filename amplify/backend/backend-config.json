@@ -1,13 +1,23 @@
 {
   "api": {
     "parknarcs": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "parknarcs500dcef4"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
               "apiKeyConfig": {
-                "apiKeyExpirationDays": 365,
-                "description": "parkNarcsWebClient"
+                "apiKeyExpirationDate": "2023-09-23T15:50:59.402Z",
+                "apiKeyExpirationDays": 7,
+                "description": "graphql_api_key"
               },
               "authenticationType": "API_KEY"
             }
@@ -15,7 +25,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authparknarcsf3377c15"
+              "userPoolId": "authparknarcs500dcef4"
             }
           }
         }
@@ -25,45 +35,134 @@
     }
   },
   "auth": {
-    "parknarcsf3377c15": {
+    "parknarcs500dcef4": {
       "customAuth": false,
       "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
   },
-  "function": {},
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
-      "type": "cicd"
+  "custom": {
+    "imagesCloudFront": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName",
+            "Region"
+          ],
+          "category": "storage",
+          "resourceName": "parkNarcsImagesBucket"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "customCloudformation"
+    }
+  },
+  "function": {
+    "handleCreatePost": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "parkNarcsImagesBucket"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "parknarcsDb"
+        },
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ],
+          "category": "api",
+          "resourceName": "parknarcs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "resizeImages": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "parkNarcsImagesBucket"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_hosting_amplifyhosting_appId": {
+    "AMPLIFY_function_handleCreatePost_deploymentBucketName": {
       "usedBy": [
         {
-          "category": "hosting",
-          "resourceName": "amplifyhosting"
+          "category": "function",
+          "resourceName": "handleCreatePost"
         }
       ]
     },
-    "AMPLIFY_hosting_amplifyhosting_type": {
+    "AMPLIFY_function_handleCreatePost_s3Key": {
       "usedBy": [
         {
-          "category": "hosting",
-          "resourceName": "amplifyhosting"
+          "category": "function",
+          "resourceName": "handleCreatePost"
+        }
+      ]
+    },
+    "AMPLIFY_function_resizeImages_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "resizeImages"
+        }
+      ]
+    },
+    "AMPLIFY_function_resizeImages_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "resizeImages"
         }
       ]
     }
   },
   "storage": {
-    "parkNarcsImageStore": {
+    "parkNarcsImagesBucket": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
     },
-    "parknarcsdb": {
+    "parknarcsDb": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

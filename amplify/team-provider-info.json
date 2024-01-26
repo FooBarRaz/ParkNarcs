@@ -1,71 +1,33 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-parknarcs-dev-202701-authRole",
-      "UnauthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-dev-202701-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-dev-202701-authRole",
+      "AuthRoleName": "amplify-parknarcs-dev-234533-authRole",
+      "UnauthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-dev-234533-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-dev-234533-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-parknarcs-dev-202701-deployment",
-      "UnauthRoleName": "amplify-parknarcs-dev-202701-unauthRole",
-      "StackName": "amplify-parknarcs-dev-202701",
-      "StackId": "arn:aws:cloudformation:us-east-1:801215360931:stack/amplify-parknarcs-dev-202701/ef5db770-3d05-11ec-a358-128d51ee02b5",
-      "AmplifyAppId": "dj96wtfph6dis"
+      "DeploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
+      "UnauthRoleName": "amplify-parknarcs-dev-234533-unauthRole",
+      "StackName": "amplify-parknarcs-dev-234533",
+      "StackId": "arn:aws:cloudformation:us-east-1:801215360931:stack/amplify-parknarcs-dev-234533/d3dae1b0-511e-11ee-9f76-12a4f5fe506b",
+      "AmplifyAppId": "d14dfbky72tkik"
     },
     "categories": {
       "auth": {
-        "parknarcsf3377c15": {}
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "dj96wtfph6dis",
-          "type": "cicd"
-        }
+        "parknarcs500dcef4": {}
       },
       "function": {
-        "S3Trigger30c01cf3": {
-          "deploymentBucketName": "amplify-parknarcs-dev-202701-deployment",
-          "s3Key": "amplify-builds/S3Trigger30c01cf3-61696b494a6b59555370-build.zip",
-          "imageWidth": "1280"
+        "handleCreatePost": {
+          "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
+          "s3Key": "amplify-builds/handleCreatePost-78714756626e6d737077-build.zip"
         },
-        "parknarcsdbTrigger5d371981": {
-          "deploymentBucketName": "amplify-parknarcs-dev-202701-deployment",
-          "s3Key": "amplify-builds/parknarcsdbTrigger5d371981-4c7a4a7475632f586536-build.zip"
+        "resizeImages": {
+          "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
+          "s3Key": "amplify-builds/resizeImages-737062626e316d6e3074-build.zip"
         }
       },
       "storage": {
-        "parknarcsdb": {},
-        "parkNarcsImageStore": {}
-      }
-    }
-  },
-  "sandbox": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-parknarcs-sandbox-113158-authRole",
-      "UnauthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-sandbox-113158-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-sandbox-113158-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-parknarcs-sandbox-113158-deployment",
-      "UnauthRoleName": "amplify-parknarcs-sandbox-113158-unauthRole",
-      "StackName": "amplify-parknarcs-sandbox-113158",
-      "StackId": "arn:aws:cloudformation:us-east-1:801215360931:stack/amplify-parknarcs-sandbox-113158/6dd636c0-bc68-11ee-8d33-121f65ab2a91",
-      "AmplifyAppId": "dthzb0v6yhy57"
-    },
-    "categories": {
-      "auth": {
-        "parknarcsf3377c15": {}
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "dthzb0v6yhy57",
-          "type": "cicd"
-        }
-      },
-      "api": {
-        "parknarcs": {}
-      },
-      "storage": {
-        "parkNarcsImageStore": {},
-        "parknarcsdb": {}
+        "parkNarcsImagesBucket": {},
+        "parknarcsDb": {}
       }
     }
   }

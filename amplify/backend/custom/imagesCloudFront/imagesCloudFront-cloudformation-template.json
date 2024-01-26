@@ -1,0 +1,93 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "env": {
+      "Type": "String"
+    },
+    "storageparkNarcsImagesBucketBucketName": {
+      "Type": "String",
+      "Description": "Input parameter describing BucketName attribute for storage/parkNarcsImagesBucket resource"
+    },
+    "storageparkNarcsImagesBucketRegion": {
+      "Type": "String",
+      "Description": "Input parameter describing Region attribute for storage/parkNarcsImagesBucket resource"
+    }
+  },
+  "Resources": {
+    "myOAI": {
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+      "Properties": {
+        "CloudFrontOriginAccessIdentityConfig": {
+          "Comment": "My OAI"
+        }
+      }
+    },
+    "myCloudFrontDistribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Origins": [
+            {
+              "DomainName": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Ref": "storageparkNarcsImagesBucketBucketName"
+                    },
+                    ".s3.amazonaws.com"
+                  ]
+                ]
+              },
+              "Id": "myS3Origin",
+              "S3OriginConfig": {
+                "OriginAccessIdentity": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "origin-access-identity/cloudfront/",
+                      {
+                        "Ref": "myOAI"
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ],
+          "Enabled": true,
+          "DefaultCacheBehavior": {
+            "TargetOriginId": "myS3Origin",
+            "ForwardedValues": {
+              "QueryString": false,
+              "Cookies": {
+                "Forward": "none"
+              }
+            },
+            "ViewerProtocolPolicy": "allow-all",
+            "AllowedMethods": ["GET", "HEAD"],
+            "CachedMethods": ["GET", "HEAD"],
+            "Compress": true,
+            "DefaultTTL": 86400,
+            "MaxTTL": 31536000,
+            "MinTTL": 0,
+            "SmoothStreaming": false,
+            "LambdaFunctionAssociations": []
+          },
+          "PriceClass": "PriceClass_All",
+          "ViewerCertificate": {
+            "CloudFrontDefaultCertificate": true
+          }
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "myCloudFrontDistributionDomainName": {
+      "Value": {
+        "Fn::GetAtt": ["myCloudFrontDistribution", "DomainName"]
+      }
+    }
+  },
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.4.0\",\"stackType\":\"custom-customCloudformation\",\"metadata\":{}}"
+}

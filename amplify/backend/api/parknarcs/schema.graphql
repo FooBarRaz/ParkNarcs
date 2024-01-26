@@ -1,31 +1,42 @@
-type Narc
-@model
-@auth(rules: [
-    { allow: owner, operations: [create, delete, update] },
-    { allow: public, operations: [read]}
-])
-{
-    id: ID!
-    comment: String!
-    date: String!
-    location: String!
-    licensePlate: String!
-    state: String!
-    image: String!
-    postedBy: ID!
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+# input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type CreatePostResponse {
+  id: String!
+  title: String!
+  s3PreSignedUrl: String!
 }
 
-#type Post @model @key(name: "byBlog", fields: ["blogID"]) {
-#  id: ID!
-#  title: String!
-#  blogID: ID!
-#  blog: Blog @connection(fields: ["blogID"])
-#  comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
-#}
-#
-#type Comment @model @key(name: "byPost", fields: ["postID", "content"]) {
-#  id: ID!
-#  postID: ID!
-#  post: Post @connection(fields: ["postID"])
-#  content: String!
-#}
+type Mutation {
+  handleCreatePost(title: String!): CreatePostResponse
+    @function(name: "handleCreatePost-${env}")
+    @auth(rules: [{ allow: private }])
+}
+
+type Post
+  @model
+  @auth(
+    rules: [
+      { allow: private, operations: [read, create, update, delete] }
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  image: String
+  comments: [Comment] @hasMany
+}
+
+type Comment
+  @model
+  @auth(
+    rules: [
+      { allow: private, operations: [read, create, update, delete] }
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  post: Post @belongsTo
+  content: String!
+}

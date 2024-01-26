@@ -1,7 +1,0 @@
-{
-    "tableName": "parknarcsdb",
-    "partitionKeyName": "partitionKey",
-    "partitionKeyType": "S",
-    "sortKeyName": "sortKey",
-    "sortKeyType": "S"
-}

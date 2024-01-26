@@ -1,0 +1,13 @@
+{
+  "resourceName": "parknarcsDb",
+  "tableName": "parknarcsDb",
+  "partitionKey": {
+    "fieldName": "pk",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "sk",
+    "fieldType": "string"
+  },
+  "gsi": []
+}
