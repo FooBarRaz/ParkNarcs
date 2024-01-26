@@ -15,16 +15,6 @@
       "auth": {
         "parknarcs500dcef4": {}
       },
-      "function": {
-        "handleCreatePost": {
-          "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
-          "s3Key": "amplify-builds/handleCreatePost-78714756626e6d737077-build.zip"
-        },
-        "resizeImages": {
-          "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
-          "s3Key": "amplify-builds/resizeImages-737062626e316d6e3074-build.zip"
-        }
-      },
       "storage": {
         "parkNarcsImagesBucket": {},
         "parknarcsDb": {}
