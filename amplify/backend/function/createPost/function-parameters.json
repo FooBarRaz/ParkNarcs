@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "storage": {
+      "parkNarcsImagesBucket": [
+        "create"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

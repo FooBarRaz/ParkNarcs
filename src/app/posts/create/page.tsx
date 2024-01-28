@@ -1,16 +1,11 @@
 'use client';
-import ImageUploadForm from '../../../ui/ImageUploadForm';
-import { Amplify } from 'aws-amplify';
-import awsmobile from '../../../aws-exports';
+import config from '@/amplifyconfiguration.json';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import { runWithAmplifyServerContext } from '@/app/lib/amplifyServerUtils';
+import { Amplify } from 'aws-amplify';
+import ImageUploadForm from '../../../ui/ImageUploadForm';
 
-Amplify.configure(awsmobile, { ssr: true });
-
-
-
-
+Amplify.configure(config, { ssr: true });
 
 
 const CreatePost = () => {

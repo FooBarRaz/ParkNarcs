@@ -1,11 +1,14 @@
-'use client'
-import { handleImageUpload } from "@/app/lib/actions";
+import { uploadData } from "aws-amplify/storage";
 import { ChangeEvent, useState } from "react";
+import { generateClient } from "aws-amplify/api";
+import * as mutations from "../graphql/mutations";
 
 interface FormData {
   title: string;
   description: string;
 }
+
+const client = generateClient();
 
 const ImageUploadForm = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -27,12 +30,35 @@ const ImageUploadForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (image) {
+      console.log("gonna upload this here file right here now..");
+      const fileName = `${Date.now()}-${image.name}.png`;
+      await uploadData({
+        data: image,
+        key: fileName,
+        options: {
+          accessLevel: "protected",
+        },
+      }).result.then((result) => {
+        return client.graphql({
+          query: mutations.createPost,
+          variables: {
+            input: {
+              title: formData.title,
+              image: result.key,
+            },
+          },
+        });
+      });
+      console.log('uploaded and updated the db');
+    }
+  };
+
   return (
-    <form
-      action={handleImageUpload}
-      encType="multipart/form-data"
-      className="max-w-md mx-auto"
-    >
+    <form onSubmit={handleSubmit}>
+      {" "}
       <div className="mb-4">
         <label htmlFor="image" className="block mb-2 font-bold">
           Image

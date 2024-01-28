@@ -1,5 +1,19 @@
 {
   "api": {
+    "parkNarcsREST": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "createPost"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "parknarcs": {
       "dependsOn": [
         {
@@ -76,7 +90,40 @@
       "service": "customCloudformation"
     }
   },
-  "function": {},
+  "function": {
+    "createPost": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "parkNarcsImagesBucket"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_createPost_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createPost"
+        }
+      ]
+    },
+    "AMPLIFY_function_createPost_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createPost"
+        }
+      ]
+    }
+  },
   "storage": {
     "parkNarcsImagesBucket": {
       "dependsOn": [],

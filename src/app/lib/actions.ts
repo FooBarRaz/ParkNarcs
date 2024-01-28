@@ -1,43 +1,38 @@
 "use server";
-import { uploadData } from "aws-amplify/storage";
+import { post } from "aws-amplify/api/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { runWithAmplifyServerContext } from "./amplifyServerUtils";
+import { cookies } from "next/headers";
 
 export async function handleImageUpload(formData: FormData) {
   console.log("handleImageUpload");
   const image = formData.get("image");
   if (image) {
-    // const imageData = new FormData();
-    // imageData.append('image', image);
-    // imageData.append("title", formData.title);
-    // imageData.append("description", formData.description);
-
-    // compress image
-    // const compressedImage = await sharp(await image.arrayBuffer())
-    //   .resize(800)
-    //   .toBuffer();
-
-    // generate filename
     const extension = "png";
     const filename = `${Date.now()}-${formData.get("title")}.${extension}`;
-    // const imageData = new FormData();
-    // imageData.append('image', compressedImage);
-    // imageData.append("title", formData.title);
-    // imageData.append("description", formData.description);
 
     try {
-      const result = await uploadData({
-        key: filename,
-        data: image,
-        options: {
-          accessLevel: "protected",
+      const response = await runWithAmplifyServerContext({
+        nextServerContext: { cookies },
+        operation: (context) => {
+          const encodedFormData = btoa(JSON.stringify(formData));
+          return post(context, {
+            apiName: "parkNarcsREST",
+            path: "/posts",
+            options: {
+              body: encodedFormData,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            },
+          }).response;
         },
-      }).result;
-      console.log("Succeeded: ", result);
+      });
+      await response.body.json().then((data) => console.log(data));
     } catch (error) {
       console.log("Error : ", error);
     }
-
     revalidatePath("/posts/create");
     redirect("/");
   } else {
