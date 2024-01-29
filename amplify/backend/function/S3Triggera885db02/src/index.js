@@ -15,10 +15,7 @@ exports.handler = async function (event) {
   const image = await S3.getObject({ Bucket: bucket, Key: key }).promise();
 
   const resizedImage = await sharp(image.Body)
-    .resize(800, {
-      fit: "inside",
-      withoutEnlargement: true,
-    })
+    .resize(800)
     .toBuffer();
 
   await S3.putObject({
