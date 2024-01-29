@@ -14,6 +14,10 @@
     "functionparknarcssharpLayerArn": {
       "Type": "String",
       "Default": "functionparknarcssharpLayerArn"
+    },
+    "functionparknarcsawsSDKLayerArn": {
+      "Type": "String",
+      "Default": "functionparknarcsawsSDKLayerArn"
     }
   },
   "Conditions": {
@@ -79,6 +83,9 @@
         "Layers": [
           {
             "Ref": "functionparknarcssharpLayerArn"
+          },
+          {
+            "Ref": "functionparknarcsawsSDKLayerArn"
           }
         ]
       }

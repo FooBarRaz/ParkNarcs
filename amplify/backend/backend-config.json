@@ -86,10 +86,22 @@
           ],
           "category": "function",
           "resourceName": "parknarcssharpLayer"
+        },
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "parknarcsawsSDKLayer"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "parknarcsawsSDKLayer": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
     },
     "parknarcssharpLayer": {
       "build": true,
