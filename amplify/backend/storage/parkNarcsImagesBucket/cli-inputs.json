@@ -3,8 +3,14 @@
   "policyUUID": "9cf10fcc",
   "bucketName": "parknarcsimagesuseast1",
   "storageAccess": "authAndGuest",
-  "guestAccess": ["READ"],
-  "authAccess": ["CREATE_AND_UPDATE", "READ", "DELETE"],
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
   "groupAccess": {},
   "customPolicy": {
     "Version": "2008-10-17",
@@ -34,5 +40,6 @@
         "Resource": "arn:aws:s3:::parknarcsimagesuseast1234533-dev/*"
       }
     ]
-  }
+  },
+  "triggerFunction": "createPost"
 }
