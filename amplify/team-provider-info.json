@@ -21,16 +21,19 @@
         "parknarcsDb": {}
       },
       "api": {
-        "parknarcs": {},
-        "parkNarcsREST": {}
+        "parknarcs": {}
       },
       "custom": {
         "imagesCloudFront": {}
       },
       "function": {
-        "createPost": {
+        "S3Triggera885db02": {
           "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
-          "s3Key": "amplify-builds/createPost-555568576f5a67507943-build.zip"
+          "s3Key": "amplify-builds/S3Triggera885db02-50567679776c4c625a76-build.zip"
+        },
+        "parknarcssharpLayer": {
+          "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
+          "s3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersion46d4fa0d-build.zip"
         }
       }
     }

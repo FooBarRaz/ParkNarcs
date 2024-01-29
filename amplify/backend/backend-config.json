@@ -1,19 +1,5 @@
 {
   "api": {
-    "parkNarcsREST": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "createPost"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
     "parknarcs": {
       "dependsOn": [
         {
@@ -93,27 +79,71 @@
   "function": {
     "S3Triggera885db02": {
       "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "createPost": {
-      "build": true,
       "dependsOn": [
         {
           "attributes": [
-            "BucketName"
+            "Arn"
           ],
-          "category": "storage",
-          "resourceName": "parkNarcsImagesBucket"
+          "category": "function",
+          "resourceName": "parknarcssharpLayer"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "parknarcssharpLayer": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_S3Triggera885db02_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Triggera885db02"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Triggera885db02_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Triggera885db02"
+        }
+      ]
+    },
+    "AMPLIFY_function_parknarcssharpLayer_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "parknarcssharpLayer"
+        }
+      ]
+    },
+    "AMPLIFY_function_parknarcssharpLayer_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "parknarcssharpLayer"
+        }
+      ]
     }
   },
   "storage": {
     "parkNarcsImagesBucket": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ],
+          "category": "function",
+          "resourceName": "S3Triggera885db02"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "S3"
     },

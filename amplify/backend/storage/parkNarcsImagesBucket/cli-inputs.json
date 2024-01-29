@@ -41,5 +41,5 @@
       }
     ]
   },
-  "triggerFunction": "createPost"
+  "triggerFunction": "S3Triggera885db02"
 }

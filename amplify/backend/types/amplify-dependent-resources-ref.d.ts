@@ -1,10 +1,5 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "parkNarcsREST": {
-      "ApiId": "string",
-      "ApiName": "string",
-      "RootUrl": "string"
-    },
     "parknarcs": {
       "GraphQLAPIEndpointOutput": "string",
       "GraphQLAPIIdOutput": "string"
@@ -27,12 +22,15 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "createPost": {
+    "S3Triggera885db02": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
+    },
+    "parknarcssharpLayer": {
+      "Arn": "string"
     }
   },
   "storage": {
