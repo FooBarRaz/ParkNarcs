@@ -10,6 +10,15 @@ exports.handler = async function (event) {
     event.Records[0].s3.object.key.replace(/\+/g, " ")
   );
 
+  // Get the current object metadata
+  const currentObject = await S3.headObject({ Bucket: bucket, Key: key }).promise();
+
+  // Check if the image has already been resized
+  if (currentObject.Metadata && currentObject.Metadata.resized === 'true') {
+    console.log(`Image ${key} has already been resized. Skipping.`);
+    return;
+  }
+
   console.log(`Bucket: ${bucket}`, `Key: ${key}`);
 
   const image = await S3.getObject({ Bucket: bucket, Key: key }).promise();
@@ -22,6 +31,9 @@ exports.handler = async function (event) {
     Body: resizedImage,
     Bucket: bucket,
     Key: key, // Use the same key to overwrite the existing object
+    Metadata: {
+      resized: 'true' // Add metadata indicating the image has been resized
+    }
   }).promise();
 
   console.log(`Successfully resized and overwritten ${key}`);
