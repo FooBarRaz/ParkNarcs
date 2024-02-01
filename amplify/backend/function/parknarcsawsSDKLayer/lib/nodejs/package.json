@@ -1,9 +1,0 @@
-{
-  "version": "1.0.0",
-  "description": "Lambda Layer for AWS SDK",
-  "main": "index.js",
-  "dependencies": {
-    "aws-sdk": "^2.290.0"
-  },
-  "devDependencies": {}
-}

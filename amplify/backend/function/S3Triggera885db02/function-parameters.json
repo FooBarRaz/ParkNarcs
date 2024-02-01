@@ -6,13 +6,6 @@
       "env": "dev",
       "version": "Always choose latest version",
       "isLatestVersionSelected": true
-    },
-    {
-      "type": "ProjectLayer",
-      "resourceName": "parknarcsawsSDKLayer",
-      "env": "dev",
-      "version": "Always choose latest version",
-      "isLatestVersionSelected": true
     }
   ]
 }
