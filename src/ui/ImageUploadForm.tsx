@@ -34,12 +34,12 @@ const ImageUploadForm = () => {
     event.preventDefault();
     if (image) {
       console.log("gonna upload this here file right here now..");
-      const fileName = `${Date.now()}-${image.name}.png`;
+      const fileName = `${Date.now()}-${formData.title}.png`;
       await uploadData({
         data: image,
         key: fileName,
         options: {
-          accessLevel: "protected",
+          accessLevel: "guest",
         },
       }).result.then((result) => {
         return client.graphql({

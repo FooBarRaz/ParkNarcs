@@ -15,8 +15,8 @@
           "additionalAuthenticationProviders": [
             {
               "apiKeyConfig": {
-                "apiKeyExpirationDate": "2024-02-02T18:06:47.984Z",
-                "apiKeyExpirationDays": 7,
+                "apiKeyExpirationDate": "2025-01-29T02:17:08.708Z",
+                "apiKeyExpirationDays": 365,
                 "description": "default"
               },
               "authenticationType": "API_KEY"
@@ -107,40 +107,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_S3Triggera885db02_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggera885db02"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Triggera885db02_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggera885db02"
-        }
-      ]
-    },
-    "AMPLIFY_function_parknarcssharpLayer_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "parknarcssharpLayer"
-        }
-      ]
-    },
-    "AMPLIFY_function_parknarcssharpLayer_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "parknarcssharpLayer"
-        }
-      ]
     }
   },
   "storage": {

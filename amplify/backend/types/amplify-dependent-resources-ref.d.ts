@@ -29,6 +29,9 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     },
+    "parknarcsawsSDKLayer": {
+      "Arn": "string"
+    },
     "parknarcssharpLayer": {
       "Arn": "string"
     }
