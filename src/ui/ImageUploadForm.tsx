@@ -33,7 +33,6 @@ const ImageUploadForm = () => {
   const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (image) {
-      console.log("gonna upload this here file right here now..");
       const fileName = `${Date.now()}-${formData.title}.png`;
       await uploadData({
         data: image,
