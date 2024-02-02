@@ -2,6 +2,7 @@ import { uploadData } from "aws-amplify/storage";
 import { ChangeEvent, useState } from "react";
 import { generateClient } from "aws-amplify/api";
 import * as mutations from "../graphql/mutations";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   title: string;
@@ -11,6 +12,7 @@ interface FormData {
 const client = generateClient();
 
 const ImageUploadForm = () => {
+  const router = useRouter();
   const [image, setImage] = useState<File | null>(null);
   const [formData, setFormData] = useState<FormData>({
     title: "",
@@ -40,18 +42,22 @@ const ImageUploadForm = () => {
         options: {
           accessLevel: "guest",
         },
-      }).result.then((result) => {
-        return client.graphql({
-          query: mutations.createPost,
-          variables: {
-            input: {
-              title: formData.title,
-              image: result.key,
+      })
+        .result.then((result) => {
+          return client.graphql({
+            query: mutations.createPost,
+            variables: {
+              input: {
+                title: formData.title,
+                image: result.key,
+              },
             },
-          },
+          });
+        })
+        .then(() => {
+          console.log("uploaded and updated the db");
+          router.push('/posts');
         });
-      });
-      console.log('uploaded and updated the db');
     }
   };
 
