@@ -18,7 +18,7 @@ exports.handler = async function (event) {
   const getObjectParams = { Bucket: bucket, Key: key };
   const { Body } = await s3Client.send(new GetObjectCommand(getObjectParams));
 
-  const resizedImage = await sharp(Body.transformToByteArray())
+  const resizedImage = await sharp(await Body.transformToByteArray())
     .resize(800)
     .toBuffer();
 
