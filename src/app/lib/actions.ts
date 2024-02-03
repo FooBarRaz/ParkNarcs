@@ -32,7 +32,7 @@ export async function fetchPosts() {
     },
   });
   console.log('received data: ', response.data.listPosts.items);
-  const imagePrefix = "https://d2r7le5mwpiers.cloudfront.net/public/resized_";
+  const imagePrefix = "https://d2r7le5mwpiers.cloudfront.net/resized_public/";
   return response.data.listPosts.items.map((post: any) => {
 
     return {
