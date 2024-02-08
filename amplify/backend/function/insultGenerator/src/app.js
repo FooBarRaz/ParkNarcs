@@ -1,9 +1,4 @@
 /*
-Use the following code to retrieve configured secrets from SSM:
-
-Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }[]
-*/
-/*
 Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
     http://aws.amazon.com/apache2.0/
@@ -12,6 +7,7 @@ See the License for the specific language governing permissions and limitations 
 */
 const express = require("express");
 const bodyParser = require("body-parser");
+const OpenAI = require("openai");
 const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
 const aws = require("aws-sdk");
 
@@ -35,10 +31,6 @@ const getOpenAiApiKey = async () => {
   return openAiApiKey;
 };
 
-// getOpenAiApiKey().then((openAiApiKey) => {
-//   process.env.OPEN_AI_API_KEY = openAiApiKey;
-// });
-
 // Enable CORS for all methods
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -46,25 +38,24 @@ app.use(function (req, res, next) {
   next();
 });
 
-/**********************
- * Example get method *
- **********************/
-const OpenAI = require("openai");
 
 app.get("/", async (req, res) => {
   try {
     const apiKey = await getOpenAiApiKey();
     const openai = new OpenAI({ apiKey });
+
+    const { model, temperature, prompt, max_tokens } = req.query;
+
     const response = await openai.chat.completions.create({
       messages: [
         {
           role: "user",
-          content: "Generate a humorous insult for a bad parking job",
+          content: prompt || "Generate a humorous insult for a bad parking job",
         },
       ],
-      model: "gpt-3.5-turbo",
-      temperature: 0.7,
-      max_tokens: 60,
+      model: model || "gpt-3.5-turbo",
+      temperature: Number.parseInt(temperature) || 0.7,
+      max_tokens: Number.parseInt(max_tokens) || 60,
     });
 
     res.json({ insult: response.choices[0].message.content });

@@ -2,7 +2,9 @@
   "httpMethod": "GET",
   "path": "/",
   "queryStringParameters": {
-    "limit": "10"
+    "limit": "10",
+    "prompt": "Generate an extra spicy insult for a bad parking job",
+    "max_tokens": 240
   },
   "headers": {
     "Content-Type": "application/json"
