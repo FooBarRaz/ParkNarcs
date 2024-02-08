@@ -35,10 +35,9 @@ const getOpenAiApiKey = async () => {
   return openAiApiKey;
 };
 
-
-getOpenAiApiKey().then((openAiApiKey) => {
-  process.env.OPEN_AI_API_KEY = openAiApiKey;
-});
+// getOpenAiApiKey().then((openAiApiKey) => {
+//   process.env.OPEN_AI_API_KEY = openAiApiKey;
+// });
 
 // Enable CORS for all methods
 app.use(function (req, res, next) {
@@ -50,29 +49,25 @@ app.use(function (req, res, next) {
 /**********************
  * Example get method *
  **********************/
-const { Configuration, OpenAIApi } = require("@openai/client");
+const OpenAI = require("openai");
 
 app.get("/", async (req, res) => {
-  let openAiApiKey = process.env.OPEN_AI_API_KEY;
-
-  if (!openAiApiKey) {
-    openAiApiKey = await getOpenAiApiKey();
-  }
-
-  const configuration = new Configuration({
-    apiKey: openAiApiKey,
-  });
-  const openai = new OpenAIApi(configuration);
-
   try {
-    const response = await openai.createCompletion({
-      model: "text-davinci-003", // Check for the latest model when implementing
-      prompt: "Generate a humorous insult for bad parking:",
+    const apiKey = await getOpenAiApiKey();
+    const openai = new OpenAI({ apiKey });
+    const response = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "user",
+          content: "Generate a humorous insult for a bad parking job",
+        },
+      ],
+      model: "gpt-3.5-turbo",
       temperature: 0.7,
       max_tokens: 60,
     });
 
-    res.json({ insult: response.data.choices[0].text.trim() });
+    res.json({ insult: response.choices[0].message.content });
   } catch (error) {
     console.error("Error calling OpenAI API:", error);
     res.status(500).send("Failed to generate insult");
