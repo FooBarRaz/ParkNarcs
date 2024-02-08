@@ -1,0 +1,7 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [],
+  "secretNames": [
+    "OPEN_AI_API_KEY"
+  ]
+}

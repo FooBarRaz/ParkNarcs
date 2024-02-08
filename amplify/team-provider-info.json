@@ -34,6 +34,9 @@
         "parknarcssharpLayer": {
           "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
           "s3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersion46d4fa0d-build.zip"
+        },
+        "insultGenerator": {
+          "secretsPathAmplifyAppId": "d14dfbky72tkik"
         }
       }
     }

@@ -1,5 +1,19 @@
 {
   "api": {
+    "parkingInsultsApi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "insultGenerator"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "parknarcs": {
       "dependsOn": [
         {
@@ -91,6 +105,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "insultGenerator": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "parknarcssharpLayer": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -111,6 +130,14 @@
         {
           "category": "function",
           "resourceName": "S3Triggera885db02"
+        }
+      ]
+    },
+    "AMPLIFY_function_insultGenerator_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insultGenerator"
         }
       ]
     },
