@@ -117,6 +117,16 @@
       "service": "LambdaLayer"
     }
   },
+  "parameters": {
+    "AMPLIFY_function_insultGenerator_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insultGenerator"
+        }
+      ]
+    }
+  },
   "storage": {
     "parkNarcsImagesBucket": {
       "dependsOn": [

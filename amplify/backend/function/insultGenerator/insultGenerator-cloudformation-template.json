@@ -73,28 +73,6 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "OPEN_AI_API_KEY": {
-              "Fn::Join": [
-                "",
-                [
-                  {
-                    "Fn::Sub": [
-                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
-                      {
-                        "appId": {
-                          "Ref": "secretsPathAmplifyAppId"
-                        },
-                        "env": {
-                          "Ref": "env"
-                        },
-                        "functionName": "insultGenerator"
-                      }
-                    ]
-                  },
-                  "OPEN_AI_API_KEY"
-                ]
-              ]
-            },
             "OPENAI_API_KEY": {
               "Fn::Join": [
                 "",
