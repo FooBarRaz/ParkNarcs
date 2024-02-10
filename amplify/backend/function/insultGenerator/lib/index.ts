@@ -3,7 +3,7 @@ import OpenAI from "openai";
 
 const getOpenAiApiKey = async (): Promise<string> => {
   const name = process.env.OPENAI_API_KEY;
-  if(!name) throw new Error("OPENAI_API_KEY not set");
+  if (!name) throw new Error("OPENAI_API_KEY not set");
 
   const { Parameters } = await new aws.SSM({})
     .getParameters({
@@ -12,26 +12,26 @@ const getOpenAiApiKey = async (): Promise<string> => {
     })
     .promise();
 
-
   return Parameters?.map((param) => param.Value)[0] || "";
 };
 
-interface Event {
-  queryStringParameters: {
-    model: string;
-    temperature: number;
-    prompt: string;
-    max_tokens: number;
+interface AppSyncEvent {
+  arguments: {
+    params: {
+      model: string;
+      temperature: number;
+      prompt: string;
+      max_tokens: number;
+    };
   };
 }
 
-const handler = async (event: Event): Promise<string> => {
+const handler = async (event: AppSyncEvent): Promise<string> => {
   try {
     const apiKey = await getOpenAiApiKey();
     const openai = new OpenAI({ apiKey });
 
-    const { model, temperature, prompt, max_tokens } =
-      event.queryStringParameters;
+    const { model, temperature, prompt, max_tokens } = event.arguments.params;
 
     const response = await openai.chat.completions.create({
       model,
