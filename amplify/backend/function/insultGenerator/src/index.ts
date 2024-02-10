@@ -2,9 +2,12 @@ import aws from "aws-sdk";
 import OpenAI from "openai";
 
 const getOpenAiApiKey = async (): Promise<string> => {
-  const { Parameters } = await new aws.SSM()
+  const name = process.env.OPENAI_API_KEY;
+  if(!name) throw new Error("OPENAI_API_KEY not set");
+
+  const { Parameters } = await new aws.SSM({})
     .getParameters({
-      Names: ["OPENAI_API_KEY"],
+      Names: [name],
       WithDecryption: true,
     })
     .promise();
