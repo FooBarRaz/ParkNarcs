@@ -94,6 +94,28 @@
                   "OPEN_AI_API_KEY"
                 ]
               ]
+            },
+            "OPENAI_API_KEY": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Sub": [
+                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
+                      {
+                        "appId": {
+                          "Ref": "secretsPathAmplifyAppId"
+                        },
+                        "env": {
+                          "Ref": "env"
+                        },
+                        "functionName": "insultGenerator"
+                      }
+                    ]
+                  },
+                  "OPENAI_API_KEY"
+                ]
+              ]
             }
           }
         },
@@ -255,7 +277,12 @@
           "Ref": "LambdaFunction"
         },
         "Principal": "appsync.amazonaws.com",
-        "SourceArn": "arn:aws:appsync:us-east-1:801215360931:apis/w2qmzkadufdwpbsxpoyilgod6m"
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "GraphQLAPI",
+            "Arn"
+          ]
+        }
       }
     }
   },

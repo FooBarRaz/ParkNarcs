@@ -34,3 +34,42 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Creating a new function
+
+To create a new function, run `amplify function add` and follow the prompts. 
+
+To enable Typescript:
+
+`npm install typescript @types/node @types/aws-lambda`
+
+Initialize a typescript project with `npx tsc --init`
+
+`tsconfig.json` might look like this:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "lib": ["es2017", "es2018", "es2019", "es2020"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
+```
+
+Then, rename the function file to `index.ts` and update the handler to use the `.ts` extension:
+
+Lastly, override the build script in `package.json` to use `tsc`:
+
+```json
+{
+  "scripts": {
+    "build": "tsc"
+  }
+}
+```

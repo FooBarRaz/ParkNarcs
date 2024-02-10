@@ -2,7 +2,8 @@
   "lambdaLayers": [],
   "environmentVariableList": [],
   "secretNames": [
-    "OPEN_AI_API_KEY"
+    "OPEN_AI_API_KEY",
+    "OPENAI_API_KEY"
   ],
   "permissions": {}
 }

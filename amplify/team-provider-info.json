@@ -39,9 +39,10 @@
         "insultGenerator": {
           "secretsPathAmplifyAppId": "d14dfbky72tkik",
           "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
-          "s3Key": "amplify-builds/insultGenerator-574d5872334e50796e69-build.zip"
+          "s3Key": "amplify-builds/insultGenerator-595256476b666a786431-build.zip"
         },
-        "insultr": {}
+        "insultr": {},
+        "insultGenerator2": {}
       }
     }
   }
