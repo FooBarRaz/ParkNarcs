@@ -246,6 +246,17 @@
       "DependsOn": [
         "LambdaExecutionRole"
       ]
+    },
+    "AppSyncLambdaInvokePermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:invokeFunction",
+        "FunctionName": {
+          "Ref": "LambdaFunction"
+        },
+        "Principal": "appsync.amazonaws.com",
+        "SourceArn": "arn:aws:appsync:us-east-1:801215360931:apis/w2qmzkadufdwpbsxpoyilgod6m"
+      }
     }
   },
   "Outputs": {
@@ -270,6 +281,14 @@
     "LambdaExecutionRole": {
       "Value": {
         "Ref": "LambdaExecutionRole"
+      }
+    },
+    "LambdaExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaExecutionRole",
+          "Arn"
+        ]
       }
     }
   }

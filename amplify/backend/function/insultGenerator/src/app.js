@@ -5,16 +5,10 @@ Licensed under the Apache License, Version 2.0 (the "License"). You may not use 
 or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
 */
-const express = require("express");
-const bodyParser = require("body-parser");
-const OpenAI = require("openai");
-const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
-const aws = require("aws-sdk");
-
-// declare a new express app
-const app = express();
-app.use(bodyParser.json());
-app.use(awsServerlessExpressMiddleware.eventContext());
+import OpenAI from "openai";
+import aws from "aws-sdk";
+// const OpenAI = require("openai");
+// const aws = require("aws-sdk");
 
 const getOpenAiApiKey = async () => {
   const { Parameters } = await new aws.SSM()
@@ -31,15 +25,7 @@ const getOpenAiApiKey = async () => {
   return openAiApiKey;
 };
 
-// Enable CORS for all methods
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
-
-
-app.get("/", async (req, res) => {
+const insult = async(args) => {
   try {
     const apiKey = await getOpenAiApiKey();
     const openai = new OpenAI({ apiKey });
@@ -63,13 +49,8 @@ app.get("/", async (req, res) => {
     console.error("Error calling OpenAI API:", error);
     res.status(500).send("Failed to generate insult");
   }
-});
+};
 
-app.listen(3000, function () {
-  console.log("App started");
-});
-
-// Export the app object. When executing the application local this does nothing. However,
-// to port it to AWS Lambda we will create a wrapper around that will load the app from
-// this file
-module.exports = app;
+exports.handler = async function (event, context) {
+  return event.arguments.msg;
+}
