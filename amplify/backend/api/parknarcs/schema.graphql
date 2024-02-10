@@ -51,6 +51,6 @@ type InsultQueryParams {
 }
 
 type Query {
-  insult(params?: InsultQueryParams): String
+  insult(params: InsultQueryParams): String
     @function(name: "insultGenerator-${env}")
 }

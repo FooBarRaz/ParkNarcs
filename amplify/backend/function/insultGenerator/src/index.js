@@ -31,7 +31,7 @@ const handler = (event) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const apiKey = yield getOpenAiApiKey();
         const openai = new openai_1.default({ apiKey });
-        const { model, temperature, prompt, max_tokens } = event.queryStringParameters;
+        const { model, temperature, prompt, max_tokens } = event.arguments.params;
         const response = yield openai.chat.completions.create({
             model,
             temperature,
