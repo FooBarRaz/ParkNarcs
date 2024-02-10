@@ -21,7 +21,8 @@
         "parknarcsDb": {}
       },
       "api": {
-        "parknarcs": {}
+        "parknarcs": {},
+        "parkingInsultsApi": {}
       },
       "custom": {
         "imagesCloudFront": {}
@@ -36,8 +37,11 @@
           "s3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersion46d4fa0d-build.zip"
         },
         "insultGenerator": {
-          "secretsPathAmplifyAppId": "d14dfbky72tkik"
-        }
+          "secretsPathAmplifyAppId": "d14dfbky72tkik",
+          "deploymentBucketName": "amplify-parknarcs-dev-234533-deployment",
+          "s3Key": "amplify-builds/insultGenerator-574d5872334e50796e69-build.zip"
+        },
+        "insultr": {}
       }
     }
   }

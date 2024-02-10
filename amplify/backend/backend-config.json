@@ -28,19 +28,19 @@
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
-              "apiKeyConfig": {
-                "apiKeyExpirationDate": "2025-01-29T02:17:08.708Z",
-                "apiKeyExpirationDays": 365,
-                "description": "default"
-              },
-              "authenticationType": "API_KEY"
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authparknarcs500dcef4"
+              }
             }
           ],
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authparknarcs500dcef4"
-            }
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-02-09T23:24:04.625Z",
+              "apiKeyExpirationDays": 0,
+              "description": "parknarcs_gql_akikey"
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },
@@ -107,6 +107,7 @@
     },
     "insultGenerator": {
       "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
@@ -130,6 +131,22 @@
         {
           "category": "function",
           "resourceName": "S3Triggera885db02"
+        }
+      ]
+    },
+    "AMPLIFY_function_insultGenerator_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insultGenerator"
+        }
+      ]
+    },
+    "AMPLIFY_function_insultGenerator_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "insultGenerator"
         }
       ]
     },

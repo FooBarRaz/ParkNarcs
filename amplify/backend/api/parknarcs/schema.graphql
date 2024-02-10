@@ -40,3 +40,8 @@ type Comment
   post: Post @belongsTo
   content: String!
 }
+
+type Query {
+  insult(msg: String): String
+    @function(name: "insultGenerator-${env}")
+}

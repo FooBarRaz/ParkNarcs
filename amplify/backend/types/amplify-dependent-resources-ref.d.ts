@@ -1,8 +1,14 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
+    "parkingInsultsApi": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    },
     "parknarcs": {
       "GraphQLAPIEndpointOutput": "string",
-      "GraphQLAPIIdOutput": "string"
+      "GraphQLAPIIdOutput": "string",
+      "GraphQLAPIKeyOutput": "string"
     }
   },
   "auth": {
@@ -23,6 +29,13 @@ export type AmplifyDependentResourcesAttributes = {
   },
   "function": {
     "S3Triggera885db02": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "insultGenerator": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",

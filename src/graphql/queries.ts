@@ -8,6 +8,10 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
+export const insult = /* GraphQL */ `query Insult($msg: String) {
+  insult(msg: $msg)
+}
+` as GeneratedQuery<APITypes.InsultQueryVariables, APITypes.InsultQuery>;
 export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
   getPost(id: $id) {
     id
