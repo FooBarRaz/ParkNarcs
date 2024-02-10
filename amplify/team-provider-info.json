@@ -41,11 +41,30 @@
         "parknarcs500dcef4": {}
       },
       "function": {
-        "S3Triggera885db02": {},
-        "insultGenerator": {
-          "secretsPathAmplifyAppId": "d14dfbky72tkik"
+        "S3Triggera885db02": {
+          "deploymentBucketName": "amplify-parknarcs-dev-161251-deployment",
+          "s3Key": "amplify-builds/S3Triggera885db02-5376465a3535626a7861-build.zip"
         },
-        "parknarcssharpLayer": {}
+        "insultGenerator": {
+          "secretsPathAmplifyAppId": "d14dfbky72tkik",
+          "deploymentBucketName": "amplify-parknarcs-dev-161251-deployment",
+          "s3Key": "amplify-builds/insultGenerator-45582b4b65796f734531-build.zip"
+        },
+        "parknarcssharpLayer": {
+          "deploymentBucketName": "amplify-parknarcs-dev-161251-deployment",
+          "s3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersionc4ac0ff8-build.zip"
+        }
+      },
+      "api": {
+        "parkingInsultsApi": {},
+        "parknarcs": {}
+      },
+      "custom": {
+        "imagesCloudFront": {}
+      },
+      "storage": {
+        "parkNarcsImagesBucket": {},
+        "parknarcsDb": {}
       }
     }
   }

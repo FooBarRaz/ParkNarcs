@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Lambda Function resource stack creation using Amplify CLI",
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.10.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -256,9 +256,17 @@
         },
         "Principal": "appsync.amazonaws.com",
         "SourceArn": {
-          "Fn::GetAtt": [
-            "GraphQLAPI",
-            "Arn"
+          "Fn::Sub": [
+            "arn:aws:appsync:${region}:${account}:apis/${apiId}/*",
+            {
+              "region": {
+                "Ref": "AWS::Region"
+              },
+              "account": {
+                "Ref": "AWS::AccountId"
+              },
+              "apiId": "w2qmzkadufdwpbsxpoyilgod6m"
+            }
           ]
         }
       }

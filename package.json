@@ -6,7 +6,8 @@
     "dev": "NODE_OPTIONS='--inspect' next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "amplify:insultGenerator": "cd amplify/backend/function/insultGenerator && tsc -p ./tsconfig.json && cd -"
   },
   "dependencies": {
     "@aws-amplify/adapter-nextjs": "^1.0.13",

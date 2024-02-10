@@ -65,8 +65,14 @@
               }
             },
             "ViewerProtocolPolicy": "allow-all",
-            "AllowedMethods": ["GET", "HEAD"],
-            "CachedMethods": ["GET", "HEAD"],
+            "AllowedMethods": [
+              "GET",
+              "HEAD"
+            ],
+            "CachedMethods": [
+              "GET",
+              "HEAD"
+            ],
             "Compress": true,
             "DefaultTTL": 86400,
             "MaxTTL": 31536000,
@@ -85,9 +91,12 @@
   "Outputs": {
     "myCloudFrontDistributionDomainName": {
       "Value": {
-        "Fn::GetAtt": ["myCloudFrontDistribution", "DomainName"]
+        "Fn::GetAtt": [
+          "myCloudFrontDistribution",
+          "DomainName"
+        ]
       }
     }
   },
-  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.4.0\",\"stackType\":\"custom-customCloudformation\",\"metadata\":{}}"
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.10.1\",\"stackType\":\"custom-customCloudformation\",\"metadata\":{}}"
 }
