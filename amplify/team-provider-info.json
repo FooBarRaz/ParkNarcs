@@ -1,48 +1,4 @@
 {
-  "sandbox": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-parknarcs-sandbox-161045-authRole",
-      "UnauthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-sandbox-161045-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::801215360931:role/amplify-parknarcs-sandbox-161045-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-parknarcs-sandbox-161045-deployment",
-      "UnauthRoleName": "amplify-parknarcs-sandbox-161045-unauthRole",
-      "StackName": "amplify-parknarcs-sandbox-161045",
-      "StackId": "arn:aws:cloudformation:us-east-1:801215360931:stack/amplify-parknarcs-sandbox-161045/dbb8e970-c858-11ee-b442-0e55d55c114d",
-      "AmplifyAppId": "d14dfbky72tkik"
-    },
-    "categories": {
-      "auth": {
-        "parknarcs500dcef4": {}
-      },
-      "function": {
-        "S3Triggera885db02": {
-          "deploymentBucketName": "amplify-parknarcs-sandbox-161045-deployment",
-          "s3Key": "amplify-builds/S3Triggera885db02-5376465a3535626a7861-build.zip"
-        },
-        "insultGenerator": {
-          "secretsPathAmplifyAppId": "d14dfbky72tkik",
-          "deploymentBucketName": "amplify-parknarcs-sandbox-161045-deployment",
-          "s3Key": "amplify-builds/insultGenerator-44766767575669726150-build.zip"
-        },
-        "parknarcssharpLayer": {
-          "deploymentBucketName": "amplify-parknarcs-sandbox-161045-deployment",
-          "s3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersiond11a7d20-build.zip"
-        }
-      },
-      "api": {
-        "parkingInsultsApi": {},
-        "parknarcs": {}
-      },
-      "custom": {
-        "imagesCloudFront": {}
-      },
-      "storage": {
-        "parkNarcsImagesBucket": {},
-        "parknarcsDb": {}
-      }
-    }
-  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-parknarcs-dev-161251-authRole",
