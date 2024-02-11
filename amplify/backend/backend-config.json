@@ -117,64 +117,6 @@
       "service": "LambdaLayer"
     }
   },
-  "parameters": {
-    "AMPLIFY_function_S3Triggera885db02_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggera885db02"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Triggera885db02_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Triggera885db02"
-        }
-      ]
-    },
-    "AMPLIFY_function_insultGenerator_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "insultGenerator"
-        }
-      ]
-    },
-    "AMPLIFY_function_insultGenerator_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "insultGenerator"
-        }
-      ]
-    },
-    "AMPLIFY_function_insultGenerator_secretsPathAmplifyAppId": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "insultGenerator"
-        }
-      ]
-    },
-    "AMPLIFY_function_parknarcssharpLayer_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "parknarcssharpLayer"
-        }
-      ]
-    },
-    "AMPLIFY_function_parknarcssharpLayer_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "parknarcssharpLayer"
-        }
-      ]
-    }
-  },
   "storage": {
     "parkNarcsImagesBucket": {
       "dependsOn": [
