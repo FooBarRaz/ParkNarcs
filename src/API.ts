@@ -411,7 +411,8 @@ export type HandleCreatePostMutation = {
 };
 
 export type InsultQueryVariables = {
-  msg?: string | null,
+  model?: string | null,
+  prompt?: string | null,
 };
 
 export type InsultQuery = {

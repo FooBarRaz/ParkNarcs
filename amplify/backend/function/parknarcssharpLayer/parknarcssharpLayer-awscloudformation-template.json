@@ -23,16 +23,20 @@
     "LambdaLayerVersion8e1e49ce": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs18.x"
-        ],
+        "CompatibleRuntimes": {
+          "Ref": "runtimes"
+        },
         "Content": {
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersion8e1e49ce-build.zip"
+          "S3Key": {
+            "Ref": "s3Key"
+          }
         },
-        "Description": "Updated layer version 2024-02-10T22:58:08.270Z",
+        "Description": {
+          "Ref": "description"
+        },
         "LayerName": {
           "Fn::Sub": [
             "parknarcssharpLayer-${env}",
@@ -51,7 +55,9 @@
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-1:801215360931:layer:parknarcssharpLayer-dev:19",
+        "LayerVersionArn": {
+          "Ref": "LambdaLayerVersion8e1e49ce"
+        },
         "Principal": "*"
       }
     }

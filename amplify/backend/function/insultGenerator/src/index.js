@@ -31,12 +31,17 @@ const handler = (event) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const apiKey = yield getOpenAiApiKey();
         const openai = new openai_1.default({ apiKey });
-        const { model, temperature, prompt, max_tokens } = event.arguments.params;
+        const { model, temperature, prompt, max_tokens } = event.arguments;
         const response = yield openai.chat.completions.create({
-            model,
-            temperature,
-            messages: [{ role: "user", content: prompt }],
-            max_tokens,
+            model: model || "gpt-3.5-turbo",
+            temperature: temperature || 0.7,
+            messages: [
+                {
+                    role: "user",
+                    content: prompt || "Generate a spicy insult for a bad parking job",
+                },
+            ],
+            max_tokens: max_tokens || 150,
         });
         return response.choices[0].message.content || "No response from Generator";
     }

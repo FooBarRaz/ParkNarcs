@@ -17,12 +17,10 @@ const getOpenAiApiKey = async (): Promise<string> => {
 
 interface AppSyncEvent {
   arguments: {
-    params: {
-      model: string;
-      temperature: number;
-      prompt: string;
-      max_tokens: number;
-    };
+    model: string;
+    temperature: number;
+    prompt: string;
+    max_tokens: number;
   };
 }
 
@@ -31,13 +29,18 @@ const handler = async (event: AppSyncEvent): Promise<string> => {
     const apiKey = await getOpenAiApiKey();
     const openai = new OpenAI({ apiKey });
 
-    const { model, temperature, prompt, max_tokens } = event.arguments.params;
+    const { model, temperature, prompt, max_tokens } = event.arguments;
 
     const response = await openai.chat.completions.create({
-      model,
-      temperature,
-      messages: [{ role: "user", content: prompt }],
-      max_tokens,
+      model: model || "gpt-3.5-turbo",
+      temperature: temperature || 0.7,
+      messages: [
+        {
+          role: "user",
+          content: prompt || "Generate a spicy insult for a bad parking job",
+        },
+      ],
+      max_tokens: max_tokens || 150,
     });
 
     return response.choices[0].message.content || "No response from Generator";

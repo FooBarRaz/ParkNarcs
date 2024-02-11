@@ -41,16 +41,7 @@ type Comment
   content: String!
 }
 
-
-
-type InsultQueryParams {
-  model: String
-  temperature: Int
-  prompt: String
-  max_tokens: Int
-}
-
 type Query {
-  insult(params: InsultQueryParams): String
+  insult(model: String, prompt: String): String
     @function(name: "insultGenerator-${env}")
 }
