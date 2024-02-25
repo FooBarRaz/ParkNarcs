@@ -1,22 +1,33 @@
 import Link from "next/link";
-import { FC } from "react";
-import Avatar from "./Avatar";
+import React from "react";
 
-export const Navbar: FC = () => {
+const Navbar = () => {
   return (
-    <nav className="fixed inset-x-0 flex justify-between bg-primary text-white">
-      <div className="px-5 xl:px-12 py-6 flex w-full items-center">
-        <a className="text-3xl font-bold font-heading" href="#">
-          NPA
-        </a>
-        <ul className="hidden flex px-4 mx-auto font-semibold font-heading space-x-12 justify-end">
-          <Link href="/">Home</Link>
-          <Link href="/posts">Posts</Link>
-          <Link href="/insults">Insults</Link>
-          <Avatar initials="AI" />
-        </ul>
-      </div>
+    <nav>
+      <header className="p-4 dark:dark:bg-gray-800 dark:dark:text-gray-100">
+        <div className="container flex justify-between h-16 mx-auto">
+          <div className="flex items-center">
+            {/* Logo */}
+            <Link href="/">My Logo</Link>
+          </div>
+          <div className="flex items-center">
+            {/* Links */}
+            <div className="flex space-x-4">
+              <Link href="/posts">Home</Link>
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
+            </div>
+            {/* User Avatar */}
+            <img
+              src="/avatar.png"
+              alt="User Avatar"
+              className="w-8 h-8 rounded-full"
+            />
+          </div>
+        </div>
+      </header>
     </nav>
   );
 };
+
 export default Navbar;

@@ -18,9 +18,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        </body>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <div className="flex flex-1 flex-row">
+            <main className="flex-1 bg-blue-50 p-4">{children}</main>
+            {/* <nav className="order-first w-32 bg-blue-100 p-4">Navigation</nav> */}
+            {/* <aside className="w-32 bg-blue-100 p-4">Side</aside> */}
+          </div>
+          <footer className="bg-blue-200 p-4">Footer</footer>
+        </div>
+      </body>
     </html>
   );
 }
