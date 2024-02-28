@@ -36,9 +36,9 @@
           ],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDate": "2024-02-09T23:24:04.625Z",
+              "apiKeyExpirationDate": "2024-02-27T03:45:05.441Z",
               "apiKeyExpirationDays": 0,
-              "description": "parknarcs_gql_akikey"
+              "description": "parknarcs_gql_apikey"
             },
             "authenticationType": "API_KEY"
           }

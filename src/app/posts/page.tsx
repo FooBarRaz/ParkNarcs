@@ -1,9 +1,9 @@
 import { PostsFetcher } from "@/ui/PostsFetcher";
 import { Amplify } from "aws-amplify";
 import { Suspense } from "react";
-import amplifyconfig from "../../amplifyconfiguration.json";
+import config from '@/amplifyconfiguration.json';
 
-Amplify.configure(amplifyconfig, { ssr: true });
+Amplify.configure(config, { ssr: true });
 
 const ImageList = async () => {
   return (

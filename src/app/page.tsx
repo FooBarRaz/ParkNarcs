@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Amplify } from "aws-amplify";
 import awsmobile from "../aws-exports";
 import Link from "next/link";

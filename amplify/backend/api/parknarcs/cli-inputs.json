@@ -6,8 +6,8 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 0,
-      "apiKeyExpirationDate": "2024-02-09T23:24:04.625Z",
-      "keyDescription": "parknarcs_gql_akikey"
+      "apiKeyExpirationDate": "2024-02-27T03:45:05.441Z",
+      "keyDescription": "parknarcs_gql_apikey"
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {

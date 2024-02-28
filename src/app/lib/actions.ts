@@ -25,6 +25,7 @@ export async function fetchInsult() {
 }
 
 export async function fetchPosts() {
+  console.log("event=fetchPosts");
   const listPostsQuery = `query ListPosts {
     listPosts {
       items {
@@ -51,7 +52,7 @@ export async function fetchPosts() {
     },
   });
   console.log("received data: ", response.data.listPosts.items);
-  const imagePrefix = "https://d2r7le5mwpiers.cloudfront.net/resized_public/";
+  const imagePrefix = "https://d1dt8p2rg7bif8.cloudfront.net/resized_public/";
   return response.data.listPosts.items.map((post: any) => {
     return {
       ...post,

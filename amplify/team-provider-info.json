@@ -27,7 +27,7 @@
         },
         "parknarcssharpLayer": {
           "deploymentBucketName": "amplify-parknarcs-dev-161251-deployment",
-          "s3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersionc4ac0ff8-build.zip"
+          "s3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersiondd10e86e-build.zip"
         }
       },
       "api": {
