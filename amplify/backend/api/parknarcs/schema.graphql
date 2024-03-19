@@ -43,5 +43,6 @@ type Comment
 
 type Query {
   insult(model: String, prompt: String): String
+    @auth(rules: [{ allow: public }])
     @function(name: "insultGenerator-${env}")
 }

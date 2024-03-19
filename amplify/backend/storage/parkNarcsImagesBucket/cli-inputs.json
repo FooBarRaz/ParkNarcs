@@ -23,10 +23,10 @@
           "Service": "cloudfront.amazonaws.com"
         },
         "Action": "s3:GetObject",
-        "Resource": "arn:aws:s3:::parknarcsimagesuseast1234533-dev/*",
+        "Resource": "arn:aws:s3:::parknarcsimagesuseast1161251-dev/*",
         "Condition": {
           "StringEquals": {
-            "AWS:SourceArn": "arn:aws:cloudfront::801215360931:distribution/E3CPJO15TBWZPB"
+            "AWS:SourceArn": "arn:aws:cloudfront::801215360931:distribution/EIWH9NIVYM5G5"
           }
         }
       },
