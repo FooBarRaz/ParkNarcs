@@ -13,7 +13,10 @@
     },
     "categories": {
       "auth": {
-        "parknarcs500dcef4": {}
+        "parknarcs500dcef4": {
+          "facebookAppId": "169799145365746",
+          "googleClientId": "341312649050-0ns22fkcob6b9jhernjiti2hi8pqeaae.apps.googleusercontent.co"
+        }
       },
       "function": {
         "S3Triggera885db02": {

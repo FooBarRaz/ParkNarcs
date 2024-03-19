@@ -6,7 +6,7 @@
     "resourceNameTruncated": "parkna500dcef4",
     "userPoolName": "parknarcs500dcef4_userpool_500dcef4",
     "autoVerifiedAttributes": [
-      "email"
+      "phone_number"
     ],
     "mfaConfiguration": "OFF",
     "mfaTypes": [
@@ -16,7 +16,7 @@
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Your verification code",
     "emailVerificationMessage": "Your verification code is {####}",
-    "defaultPasswordPolicy": true,
+    "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
@@ -36,10 +36,12 @@
     "sharedId": "500dcef4",
     "resourceName": "parknarcs500dcef4",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "manual",
     "hostedUI": false,
     "triggers": {},
-    "userPoolGroupList": [],
+    "userPoolGroupList": [
+      "ParkNarcsUsers"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
@@ -57,12 +59,16 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "userPoolGroups": false,
+    "userPoolGroups": true,
     "adminQueries": false,
     "parentStack": {
       "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "authProviders": []
+    "authProviders": [
+      "graph.facebook.com",
+      "accounts.google.com"
+    ],
+    "thirdPartyAuth": true
   }
 }

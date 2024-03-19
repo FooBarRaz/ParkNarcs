@@ -67,11 +67,27 @@
         "socialProviders": [],
         "usernameAttributes": [],
         "verificationMechanisms": [
-          "EMAIL"
+          "PHONE_NUMBER"
         ]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "parknarcs500dcef4"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "custom": {
@@ -118,6 +134,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_auth_parknarcs500dcef4_facebookAppId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "parknarcs500dcef4"
+        }
+      ]
+    },
+    "AMPLIFY_auth_parknarcs500dcef4_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "parknarcs500dcef4"
+        }
+      ]
+    },
     "AMPLIFY_function_S3Triggera885db02_deploymentBucketName": {
       "usedBy": [
         {
