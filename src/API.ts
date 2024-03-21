@@ -2,6 +2,13 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
+export type CreatePostResponse = {
+  __typename: "CreatePostResponse",
+  id: string,
+  title: string,
+  s3PreSignedUrl: string,
+};
+
 export type CreatePostInput = {
   id?: string | null,
   title: string,
@@ -154,13 +161,6 @@ export type DeleteCommentInput = {
   _version?: number | null,
 };
 
-export type CreatePostResponse = {
-  __typename: "CreatePostResponse",
-  id: string,
-  title: string,
-  s3PreSignedUrl: string,
-};
-
 export type ModelPostFilterInput = {
   id?: ModelIDInput | null,
   title?: ModelStringInput | null,
@@ -233,6 +233,19 @@ export type ModelSubscriptionCommentFilterInput = {
   and?: Array< ModelSubscriptionCommentFilterInput | null > | null,
   or?: Array< ModelSubscriptionCommentFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
+};
+
+export type HandleCreatePostMutationVariables = {
+  title: string,
+};
+
+export type HandleCreatePostMutation = {
+  handleCreatePost?:  {
+    __typename: "CreatePostResponse",
+    id: string,
+    title: string,
+    s3PreSignedUrl: string,
+  } | null,
 };
 
 export type CreatePostMutationVariables = {
@@ -394,19 +407,6 @@ export type DeleteCommentMutation = {
     _deleted?: boolean | null,
     _lastChangedAt: number,
     postCommentsId?: string | null,
-  } | null,
-};
-
-export type HandleCreatePostMutationVariables = {
-  title: string,
-};
-
-export type HandleCreatePostMutation = {
-  handleCreatePost?:  {
-    __typename: "CreatePostResponse",
-    id: string,
-    title: string,
-    s3PreSignedUrl: string,
   } | null,
 };
 

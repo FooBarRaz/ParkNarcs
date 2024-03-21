@@ -1,19 +1,5 @@
 {
   "api": {
-    "parkingInsultsApi": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "insultGenerator"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
     "parknarcs": {
       "dependsOn": [
         {
@@ -32,13 +18,29 @@
               "userPoolConfig": {
                 "userPoolId": "authparknarcs500dcef4"
               }
+            },
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2024-03-21T03:00:21.308Z",
+                "apiKeyExpirationDays": 0,
+                "description": ""
+              },
+              "authenticationType": "API_KEY"
+            },
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2025-03-21T03:06:03.877Z",
+                "apiKeyExpirationDays": 365,
+                "description": "gql_api_key_0320"
+              },
+              "authenticationType": "API_KEY"
             }
           ],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDate": "2024-02-27T03:45:05.441Z",
+              "apiKeyExpirationDate": "2024-03-21T02:47:09.559Z",
               "apiKeyExpirationDays": 0,
-              "description": "parknarcs_gql_apikey"
+              "description": "graphql_api_key"
             },
             "authenticationType": "API_KEY"
           }
@@ -72,22 +74,6 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
-    },
-    "userPoolGroups": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "parknarcs500dcef4"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Cognito-UserPool-Groups"
     }
   },
   "custom": {

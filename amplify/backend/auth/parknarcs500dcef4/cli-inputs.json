@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "parknarcs500dcef4_identitypool_500dcef4",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "parkna500dcef4",
     "userPoolName": "parknarcs500dcef4_userpool_500dcef4",
     "autoVerifiedAttributes": [
@@ -36,12 +36,10 @@
     "sharedId": "500dcef4",
     "resourceName": "parknarcs500dcef4",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "manual",
+    "useDefault": "default",
     "hostedUI": false,
     "triggers": {},
-    "userPoolGroupList": [
-      "ParkNarcsUsers"
-    ],
+    "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
@@ -65,10 +63,6 @@
       "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "authProviders": [
-      "graph.facebook.com",
-      "accounts.google.com"
-    ],
-    "thirdPartyAuth": true
+    "authProviders": []
   }
 }

@@ -20,7 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersionfa20f05b": {
+    "LambdaLayerVersionfe0025f7": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": [
@@ -30,9 +30,9 @@
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersionfa20f05b-build.zip"
+          "S3Key": "amplify-builds/parknarcssharpLayer-LambdaLayerVersionfe0025f7-build.zip"
         },
-        "Description": "Updated layer version 2024-02-28T02:47:12.705Z",
+        "Description": "Updated layer version 2024-03-19T01:35:50.644Z",
         "LayerName": {
           "Fn::Sub": [
             "parknarcssharpLayer-${env}",
@@ -47,11 +47,11 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPublicfa20f05b": {
+    "LambdaLayerPermissionPublicfe0025f7": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-1:801215360931:layer:parknarcssharpLayer-dev:26",
+        "LayerVersionArn": "arn:aws:lambda:us-east-1:801215360931:layer:parknarcssharpLayer-dev:27",
         "Principal": "*"
       }
     }
@@ -59,7 +59,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersionfa20f05b"
+        "Ref": "LambdaLayerVersionfe0025f7"
       }
     }
   }

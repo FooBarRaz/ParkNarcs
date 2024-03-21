@@ -10,8 +10,9 @@ type CreatePostResponse {
 
 type Mutation {
   handleCreatePost(title: String!): CreatePostResponse
-    @function(name: "handleCreatePost-${env}")
     @auth(rules: [{ allow: private }])
+
+    @function(name: "handleCreatePost-${env}")
 }
 
 type Post

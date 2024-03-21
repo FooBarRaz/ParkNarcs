@@ -10,7 +10,7 @@ export async function fetchInsult() {
   `;
 
   const response = await runWithAmplifyServerContext({
-    nextServerContext: { cookies },
+    nextServerContext: { cookies  },
     operation: (context) => {
       const client = generateClient({
         config: {},
@@ -53,10 +53,8 @@ export async function fetchPosts() {
   });
   console.log("received data: ", response.data.listPosts.items);
   const imagePrefix = "https://d1dt8p2rg7bif8.cloudfront.net/resized_public/";
-  return response.data.listPosts.items.map((post: any) => {
-    return {
-      ...post,
-      image: `${imagePrefix}${post.image}`,
-    };
-  });
+  return response.data.listPosts.items.map((post: any) => ({
+    ...post,
+    image: `${imagePrefix}${post.image}`
+  }));
 }
