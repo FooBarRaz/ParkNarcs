@@ -8,18 +8,6 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const handleCreatePost = /* GraphQL */ `mutation HandleCreatePost($title: String!) {
-  handleCreatePost(title: $title) {
-    id
-    title
-    s3PreSignedUrl
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.HandleCreatePostMutationVariables,
-  APITypes.HandleCreatePostMutation
->;
 export const createPost = /* GraphQL */ `mutation CreatePost(
   $input: CreatePostInput!
   $condition: ModelPostConditionInput
@@ -187,4 +175,16 @@ export const deleteComment = /* GraphQL */ `mutation DeleteComment(
 ` as GeneratedMutation<
   APITypes.DeleteCommentMutationVariables,
   APITypes.DeleteCommentMutation
+>;
+export const handleCreatePost = /* GraphQL */ `mutation HandleCreatePost($title: String!) {
+  handleCreatePost(title: $title) {
+    id
+    title
+    s3PreSignedUrl
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.HandleCreatePostMutationVariables,
+  APITypes.HandleCreatePostMutation
 >;

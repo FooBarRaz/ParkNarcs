@@ -4,26 +4,20 @@
     "apiName": "parknarcs",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "AMAZON_COGNITO_USER_POOLS",
-      "cognitoUserPoolId": "authparknarcs500dcef4"
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2025-03-21T03:28:41.078Z",
+      "keyDescription": "gql_api_key_xx1"
     },
-    "conflictResolution": {},
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
     "additionalAuthTypes": [
       {
         "mode": "AMAZON_COGNITO_USER_POOLS",
         "cognitoUserPoolId": "authparknarcs500dcef4"
-      },
-      {
-        "mode": "API_KEY",
-        "expirationTime": 0,
-        "apiKeyExpirationDate": "2024-03-21T03:00:21.308Z",
-        "keyDescription": ""
-      },
-      {
-        "mode": "API_KEY",
-        "expirationTime": 365,
-        "apiKeyExpirationDate": "2025-03-21T03:06:03.877Z",
-        "keyDescription": "gql_api_key_0320"
       }
     ]
   }
